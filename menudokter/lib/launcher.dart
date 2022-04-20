@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:menudokter/constant.dart';
+import 'package:menudokter/landingpage.dart' as users;
 
 class LauncherPage extends StatefulWidget {
   @override
@@ -7,11 +11,30 @@ class LauncherPage extends StatefulWidget {
 
 class _LauncherPageState extends State<LauncherPage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startLaunching();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  startLaunching() async {
+    var duration = Duration(seconds: 3);
+    return Timer(duration, () {
+      Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) {
+        return new users.Landingpage();
+      }));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Launcher page'),
-      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         height: MediaQuery.of(context).size.height,
