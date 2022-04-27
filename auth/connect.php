@@ -1,5 +1,5 @@
 <?php
-	#urutane "localhost", "username mu", "password mu", "jeneng db mu"
+	# "localhost", "username", "password", "database"
 	
 	$conn = mysqli_connect("localhost", "root", "", "hostyking_db");
 ?>
