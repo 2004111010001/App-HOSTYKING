@@ -11,7 +11,7 @@ foreach ($pecahjudul as $w) {
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
       <img src="assets/img/Logo.png" alt="logo" width="35" class="rounded-box">
-      <a href="http://localhost/hostyking-app/index.php"><?php echo $judul; ?></a>
+      <a href="http://localhost/App-HOSTYKING/index.php"><?php echo $judul; ?></a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
       <a href="index.html"><?php echo $acronym; ?></a>
