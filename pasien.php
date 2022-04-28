@@ -54,7 +54,7 @@
                   <div class="card-header">
                     <h4>Pasien yang telah terdaftar</h4>
                     <div class="card-header-action">
-                      <a href="rawat_jalan.php" class="btn btn-primary">Daftar pasien baru</a>
+                      <a href="booking.php" class="btn btn-primary">Daftar pasien baru</a>
                     </div>
                   </div>
                   <div class="card-body">

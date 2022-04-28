@@ -39,7 +39,7 @@
          font-size: inherit;
       }
 
-      /*auto completenya dirawat jalan */
+      /*auto completenya dibooking */
       .autocomplete {
          position: relative;
          display: inline-block;
