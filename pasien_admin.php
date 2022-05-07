@@ -95,13 +95,13 @@
                                   ?>
                                 </div>
                               </th>
-                              <td><?php if ($row['tgl_lahir'] == "") {
-                                    echo "-";
+                              <td><?php if ($row['tgl_lahir'] == "0" OR $row['tgl_lahir'] == "") {
+                                    echo "Data belum di input";
                                   } else {
                                     echo tgl_indo($row['tgl_lahir']);
                                   } ?></td>
-                              <td><?php if ($row['tgl_lahir'] == "") {
-                                    echo "-";
+                              <td><?php if ($row['tgl_lahir'] == "0" OR $row['tgl_lahir'] == "") {
+                                    echo "Data belum di input";
                                   } else {
                                     umur($row['tgl_lahir']);
                                   } ?></td>

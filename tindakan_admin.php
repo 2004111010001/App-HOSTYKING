@@ -486,7 +486,7 @@
                         <input type="hidden" name="id" value="<?php echo $passs; ?>">
                         <input type="hidden" name="idriwayat" value="<?php echo $penyyy; ?>">
                         <div class="btn-group">
-                          <a href="rawat_jalan.php"class="btn btn-info" title="Ke Menu Utama" data-toggle="tooltip">Ke Menu Utama</a>
+                          <a href="tindakan_admin.php"class="btn btn-info" title="Ke Menu Utama" data-toggle="tooltip">Ke Menu Utama</a>
                           <button type="submit" class="btn btn-primary" name="printone" title="Print" data-toggle="tooltip"><i class="fas fa-print"></i> Cetak Struk Pembayaran</button>
                         </div>
                       </form>

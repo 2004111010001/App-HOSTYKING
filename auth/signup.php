@@ -32,10 +32,6 @@
 
       $email = $_POST['email'];
       $namalengkap = $_POST['namalengkap'];
-      $tanggallahir = $_POST['tanggallahir'];
-      $nik = $_POST['nik'];
-      $tinggibadan = $_POST['tinggi_badan'];
-      $beratbadan = $_POST['berat_badan'];
       $username = $_POST['username'];
       $password = $_POST['password'];
       $user = mysqli_real_escape_string($conn, $_POST['username']);
@@ -67,7 +63,7 @@
               }, 500);
           </script>';
         } else {
-          $add = mysqli_query($conn, "INSERT INTO pasien (mail, nama_pasien, tgl_lahir, nik, tinggi_badan, berat_badan, alamat, username, password) VALUES ('$email', '$namalengkap', '$tanggallahir', '$nik', '$tinggibadan', '$beratbadan', '-', '$username', '$password')");
+          $add = mysqli_query($conn, "INSERT INTO pasien (mail, nama_pasien, tgl_lahir, nik, tinggi_badan, berat_badan, alamat, username, password) VALUES ('$email', '$namalengkap', '0', '0', '0', '0', '-', '$username', '$password')");
           echo '<script>
             setTimeout(function() {
               swal({
@@ -111,38 +107,6 @@
                           <input id="namalengkap" type="text" class="form-control" minlength="2" name="namalengkap" placeholder="Masukkan nama lengkap" tabindex="1" required autofocus>
                           <div class="invalid-feedback">
                             Mohon isi nama lengkap anda!
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="tanggallahir">Tanggal Lahir</label>
-                          <input id="tanggallahir" type="text" class="form-control" minlength="2" name="tanggallahir" placeholder="YYYY-MM-DD" tabindex="1" required autofocus>
-                          <div class="invalid-feedback">
-                            Mohon isi tanggal lahir anda!
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="nik">NIK</label>
-                            <input id="nik" type="number" class="form-control" minlength="2" name="nik" placeholder="Masukkan NIK sesuai KTP" tabindex="1" required autofocus>
-                          <div class="invalid-feedback">
-                            Mohon isi NIK anda!
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="nik">Tinggi Badan</label>
-                            <input id="tinggi_badan" type="number" class="form-control" minlength="2" name="tinggi_badan" placeholder="Masukkan tinggi badan" tabindex="1" required autofocus>
-                          <div class="invalid-feedback">
-                            Mohon isi tinggi badan anda!
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="nik">Berat Badan</label>
-                            <input id="berat_badan" type="number" class="form-control" minlength="2" name="berat_badan" placeholder="Masukkan berat badan" tabindex="1" required autofocus>
-                          <div class="invalid-feedback">
-                            Mohon isi berat badan anda!
                           </div>
                         </div>
 
