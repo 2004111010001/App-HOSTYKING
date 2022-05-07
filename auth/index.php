@@ -1,122 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <link rel="shortcut icon" type="image/x-icon" href="../assets/img/Logo.png" />
-  <title>HOSTYKING - Login</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HOSTYKING</title>
+    <meta name="description"
+          content="Selamat Datang di Aplikasi Kami"/>
 
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/modules/fontawesome/css/all.min.css">
+    <!--Inter UI font-->
+    <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
 
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
+    <!--vendors styles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
-  <?php
-  session_start();
-  if(isset($_SESSION['id_pegawai'])){
-    header('location:../');
-  }else{
-    include 'connect.php';
-    if(isset($_POST['submit'])){
-      @$user = mysqli_real_escape_string($conn, $_POST['username']);
-      @$pass = mysqli_real_escape_string($conn, $_POST['password']);
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../assets/css/default.css" id="theme-color">
+<?php
+session_start();
+unset($_SESSION['id_pegawai']);
+unset($_SESSION['id_pasien']);
+session_destroy();
 
-      $login = mysqli_query($conn, "SELECT * FROM pegawai WHERE username='$user' AND password='$pass'");
-      $cek = mysqli_num_rows($login);
-      $userid = mysqli_fetch_array($login);
+?>
+</head>
+<body>
 
-      if($cek == 0){
-        echo '
-        <script>
-        setTimeout(function() {
-          swal({
-            title: "Login Gagal",
-            text: "Username atau Password Anda Salah. Mohon periksa kembali form anda!",
-            icon: "error"
-            });
-            }, 500);
-            </script>
-            ';
-          }else{
-            header('location:../');
-            $_SESSION['id_pegawai'] = $userid['id'];
-          }
-        }
-        ?>
-      </head>
-      <body>
-        <div id="app">
-          <section class="section">
-            <div class="container mt-5">
-              <div class="row">
-                <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                  <div class="login-brand">
-                    <img src="../assets/img/Logo.png" alt="logo" width="100" class="shadow-light rounded-box">
-                  </div>
-
-                  <div class="card card-primary">
-                    <div class="card-header"><h4>Login</h4></div>
-
-                    <div class="card-body">
-                      <form method="POST" action="" class="needs-validation" novalidate="" autocomplete="off">
-                        <div class="form-group">
-                          <label for="username">Username</label>
-                          <input id="username" type="text" class="form-control" minlength="2" name="username" tabindex="1" required autofocus>
-                          <div class="invalid-feedback">
-                            Mohon isi username anda dengan benar!
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <div class="d-block">
-                           <label for="password" class="control-label">Password</label>
-                         </div>
-                         <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                         <div class="invalid-feedback">
-                          Mohon isi password anda!
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-
-                        <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                          Login
-                        </button>
-                      </div>
-                    </form>
-
-                  </div>
-                </div>
-                <div class="simple-footer">
-                  Copyright &copy; HOSTYKING 2022
-                  <br><center><p>Hospital Facility Booking</a></p></center>
-                  
-                  
-                </div>
-              </div>
+<!--navigation-->
+<section class="smart-scroll">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand heading-black" href="index.html">
+                HOSTYKING
+            </a>
+            <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary" href="#">
+                            <em data-feather="layout" width="18" height="18" class="mr-2"></em>
+                            Try Generator
+                        </a>
+                    </li>
+                </ul>
             </div>
-          </div>
-        </section>
-      </div>
+        </nav>
+    </div>
+</section>
 
-      <!-- General JS Scripts -->
-      <script src="../assets/modules/jquery.min.js"></script>
-      <script src="../assets/modules/popper.js"></script>
-      <script src="../assets/modules/tooltip.js"></script>
-      <script src="../assets/modules/bootstrap/js/bootstrap.min.js"></script>
-      <script src="../assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-      <script src="../assets/modules/moment.min.js"></script>
-      <script src="../assets/js/stisla.js"></script>
+<!--hero header-->
+<section class="py-7 py-md-0 bg-hero" id="home">
+    <div class="container">
+        <div class="row vh-md-100">
+            <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+                <div class="login-brand">
+                    <img src="../assets/img/Logo.png" alt="logo" width="100" class="shadow-light rounded-box">
+                </div>
+                <h5>Hopital Facility Booking (HOSTYKING)</h5>
+                <h1 class="heading-black text-capitalize">Cepat tanpa Antrian Panjang!</h1>
+                <p class="lead py-3">Aplikasi HOSTYKING atau singkatan dari Hospital Facility Booking merupakan aplikasi yang mampu membooking fasilitas yang ada dirumah sakit</p>
+                <a href="login_admin.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Login for Doctor
+                    <em class="ml-2" data-feather="arrow-right"></em>
+                </button></a>
+                <a href="login_pasien.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Login for Pasien
+                    <em class="ml-2" data-feather="arrow-right"></em>
+                </button></a>
+            </div>
+        </div>
+    </div>
+</section>
 
-      <!-- Template JS File -->
-      <script src="../assets/js/scripts.js"></script>
-      <script src="../assets/js/custom.js"></script>
-      <!-- Sweet Alert -->
-      <script src="../assets/modules/sweetalert/sweetalert.min.js"></script>
-      <script src="../assets/js/page/modules-sweetalert.js"></script>
-    </body>
-  <?php } ?>
-  </html>
+<!-- features section -->
+<section class="pt-6 pb-7" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <h2 class="heading-black">Knight offers everything you need.</h2>
+                <p class="text-muted lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
+                    commodo, tempus odio a, vestibulum nibh.</p>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-10 mx-auto">
+                <div class="row feature-boxes">
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-primary">
+                            <div class="icon-box-inner">
+                                <span data-feather="edit-3" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Create once. Share everywhere.</h5>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
+                            nisi commodo, tempus odio a, vestibulum nibh.</p>
+                    </div>
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-success">
+                            <div class="icon-box-inner">
+                                <span data-feather="monitor" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Unlimited devices</h5>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
+                            nisi commodo, tempus odio a, vestibulum nibh.</p>
+                    </div>
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-danger">
+                            <div class="icon-box-inner">
+                                <span data-feather="layout" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Beautiful tempates & layouts</h5>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
+                            nisi commodo, tempus odio a, vestibulum nibh.</p>
+                    </div>
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-info">
+                            <div class="icon-box-inner">
+                                <span data-feather="globe" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Available globally</h5>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
+                            nisi commodo, tempus odio a, vestibulum nibh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+<!--footer-->
+<footer class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <h5>About Knight</h5>
+                <p class="text-muted">Magnis modipsae que voloratati andigen daepeditem quiate conecus aut labore.
+                    Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam explabo.</p>
+                <ul class="list-inline social social-sm">
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-dribbble"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-muted text-center small-xl">
+                Copyright &copy; HOSTYKING 2022
+                <br><center><p>Hospital Facility Booking</a></p></center>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--scroll to top-->
+<div class="scroll-top">
+    <i class="fa fa-angle-up" aria-hidden="true"></i>
+</div>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="../assets/js/scripts_landing.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Data Obat";
+  $page = "Data Obat (Admin)";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -51,8 +51,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar.php';
-      include 'part/sidebar.php';
+      include 'part/navbar_admin.php';
+      include 'part/sidebar_admin.php';
       ?>
 
       <!-- Main Content -->

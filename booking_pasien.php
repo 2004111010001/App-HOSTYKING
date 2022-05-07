@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Rawat Jalan";
+  $page = "Booking (Pasien)";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -148,8 +148,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar.php';
-      include 'part/sidebar.php';
+      include 'part/navbar_pasien.php';
+      include 'part/sidebar_pasien.php';
       ?>
 
       <!-- Main Content -->
@@ -164,7 +164,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Create New App</h4>
+                    <h4>Masukkan Data serta Tindakan untuk Pasien</h4>
                   </div>
                   <div class="card-body">
                     <div class="row mt-4">
@@ -486,7 +486,7 @@
                         <input type="hidden" name="id" value="<?php echo $passs; ?>">
                         <input type="hidden" name="idriwayat" value="<?php echo $penyyy; ?>">
                         <div class="btn-group">
-                          <a href="rawat_jalan.php"class="btn btn-info" title="Ke Menu Utama" data-toggle="tooltip">Ke Menu Utama</a>
+                          <a href="booking_pasien.php"class="btn btn-info" title="Ke Menu Utama" data-toggle="tooltip">Ke Menu Utama</a>
                           <button type="submit" class="btn btn-primary" name="printone" title="Print" data-toggle="tooltip"><i class="fas fa-print"></i> Cetak Struk Pembayaran</button>
                         </div>
                       </form>

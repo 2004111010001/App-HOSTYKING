@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Dashboard";
+  $page = "Dashboard (Admin)";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -31,15 +31,15 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar.php';
-      include 'part/sidebar.php';
+      include 'part/navbar_admin.php';
+      include 'part/sidebar_admin.php';
       ?>
 
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Dashboard</h1>
+            <h1>Dashboard (Admin)</h1>
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -109,7 +109,7 @@
                 <div class="card-header">
                   <h4>Status Ruang Rawat Inap</h4>
                   <div class="card-header-action">
-                    <a href="ruangan.php">Detail</a>
+                    <a href="ruangan_admin.php">Detail</a>
                   </div>
                 </div>
                 <div class="card-body">
@@ -166,7 +166,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Rawat Inap</h4>
-                        <a href="ruangan.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="ruangan_admin.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -177,7 +177,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Foto Rotgen</h4>
-                        <a href="rotgen.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="rotgen_admin.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -188,7 +188,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Data Obat</h4>
-                        <a href="obat.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="obat_admin.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>

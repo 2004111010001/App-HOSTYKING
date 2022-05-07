@@ -26,8 +26,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar.php';
-      include 'part/sidebar.php';
+      include 'part/navbar_admin.php';
+      include 'part/sidebar_admin.php';
       include 'part_func/umur.php';
       include 'part_func/tgl_ind.php';
       ?>
@@ -63,7 +63,7 @@
                           } else {
                             echo '<button type="submit" class="btn btn-primary" name="print_foto">Print Foto</button> &emsp;';
                           } ?>
-                          <a href="rawat_jalan.php" class="btn btn-primary">Rawat Jalan</a>
+                          <a href="booking.php" class="btn btn-primary">Booking</a>
                         </form>
                       </div>
                     </div>

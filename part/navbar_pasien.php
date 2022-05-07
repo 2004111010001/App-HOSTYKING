@@ -1,11 +1,11 @@
 <?php
 
-$sessionid = $_SESSION['id_pegawai'];
+$sessionid = $_SESSION['id_pasien'];
 
 if(!isset($sessionid)){
   header('location:auth');
 }
-$nama = mysqli_query($conn, "SELECT * FROM pegawai WHERE id=$sessionid");
+$nama = mysqli_query($conn, "SELECT * FROM pasien WHERE id=$sessionid");
 $output = mysqli_fetch_array($nama);
 ?>
 <nav class="navbar navbar-expand-lg main-navbar">
@@ -18,16 +18,10 @@ $output = mysqli_fetch_array($nama);
   <ul class="navbar-nav navbar-right">
     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
       <img alt="image" src="assets/img/avatar/caesar.jpg" class="rounded-circle mr-1">
-      <div class="d-sm-none d-lg-inline-block">Hi, <?php echo ucwords($output['nama_pegawai']); ?></div></a>
+      <div class="d-sm-none d-lg-inline-block">Hi, <?php echo ucwords($output['nama_pasien']); ?></div></a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title"><i class="fas fa-circle text-success"></i>
-          <?php
-          if($output["pekerjaan"] == "1"){
-            echo "Dokter";
-          }else{
-            echo "Apoteker";
-          }
-          ?>
+          Pasien
         </div>
         <div class="dropdown-divider"></div>
         <a href="#" data-target="#ModalLogout" data-toggle="modal" class="dropdown-item has-icon text-danger">
@@ -52,7 +46,7 @@ $output = mysqli_fetch_array($nama);
       </div>
       <div class="modal-footer bg-whitesmoke br">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="window.location.href = 'auth/logout.php';" class="btn btn-danger">Ya</button>
+        <button type="button" onclick="window.location.href = 'auth/logout_pasien.php';" class="btn btn-danger">Ya</button>
       </div>
     </div>
   </div>
