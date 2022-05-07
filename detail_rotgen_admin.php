@@ -26,8 +26,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar.php';
-      include 'part/sidebar.php';
+      include 'part/navbar_admin.php';
+      include 'part/sidebar_admin.php';
       include 'part_func/umur.php';
       include 'part_func/tgl_ind.php';
       ?>

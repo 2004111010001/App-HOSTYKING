@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Data Foto Rotgen";
+  $page = "Data Foto Rotgen (Admin)";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -16,8 +16,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar.php';
-      include 'part/sidebar.php';
+      include 'part/navbar_admin.php';
+      include 'part/sidebar_admin.php';
       ?>
 
       <!-- Main Content -->
@@ -33,7 +33,7 @@
                   <div class="card-header">
                     <h4>Pasien yang memiliki foto rotgen</h4>
                     <div class="card-header-action">
-                      <a href="booking.php" class="btn btn-primary">Tambah Foto Rotgen</a>
+                      <a href="tindakan_admin.php" class="btn btn-primary">Tambah Foto Rotgen</a>
                     </div>
                   </div>
                   <div class="card-body">

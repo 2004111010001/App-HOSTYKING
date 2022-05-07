@@ -59,11 +59,15 @@ INSERT INTO `obat` (`id`, `nama_obat`, `stok`, `harga`) VALUES
 
 CREATE TABLE `pasien` (
   `id` int(11) NOT NULL,
+  `mail` varchar(200) NOT NULL,
   `nama_pasien` varchar(200) NOT NULL,
   `tgl_lahir` varchar(200) NOT NULL,
+  `nik` int(16) NOT NULL,
   `tinggi_badan` int(11) NOT NULL,
   `berat_badan` int(11) NOT NULL,
-  `alamat` text NOT NULL
+  `alamat` text NOT NULL,
+  `username` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
