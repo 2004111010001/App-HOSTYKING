@@ -33,7 +33,7 @@
                   <div class="card-header">
                     <h4>Pasien yang memiliki foto rotgen</h4>
                     <div class="card-header-action">
-                      <a href="tindakan_admin.php" class="btn btn-primary">Tambah Foto Rotgen</a>
+                      <a href="booking_pasien.php" class="btn btn-primary">Tambah Foto Rotgen</a>
                     </div>
                   </div>
                   <div class="card-body">
@@ -71,7 +71,7 @@
                               <td>Rp. <?php echo number_format($row['biaya'], 0, ".", "."); ?></td>
                               <td align="center">
                                 <div class="btn-group">
-                                  <form method="POST" action="detail_rotgen.php">
+                                  <form method="POST" action="detail_rotgen_pasien.php">
                                     <input type="hidden" name="id" value="<?php echo $pasien['nama_pasien']; ?>">
                                     <input type="hidden" name="idriwayat" value="<?php echo $idriwayat ?>">
                                     <button type="submit" class="btn btn-info" name="detail" title="Menampilkan semua foto rotgen" data-toggle="tooltip">Info Detail</button>

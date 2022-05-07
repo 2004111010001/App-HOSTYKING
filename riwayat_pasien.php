@@ -15,13 +15,14 @@
   $nama = mysqli_query($conn, "SELECT * FROM pasien WHERE id=$sessionid");
   $output = mysqli_fetch_array($nama);
   if (isset($_POST['submit'])) {
-    $id = $_POST['id'];
     $nama = $_POST['nama'];
     $berat = $_POST['berat'];
     $tinggi = $_POST['tinggi'];
     $tgl = $_POST['tgl'];
+    $nik = $_POST['nik'];
+    $alamat = $_POST['alamat'];
 
-    $up2 = mysqli_query($conn, "UPDATE pasien SET nama_pasien='$nama', tgl_lahir='$tgl', berat_badan='$berat', tinggi_badan='$tinggi' WHERE id='$id'");
+    $up2 = mysqli_query($conn, "UPDATE pasien SET nama_pasien='$nama', tgl_lahir='$tgl', nik='$nik', berat_badan='$berat', tinggi_badan='$tinggi', alamat='$alamat' WHERE id='$sessionid'");
     echo '<script>
 				setTimeout(function() {
 					swal({
@@ -70,6 +71,18 @@
                        </div>
                      </div>
                      <div class="form-group row">
+                       <label class="col-md-4 text-md-right text-left">NIK</label>
+                       <div class="col-lg-4 col-md-6">
+                         <input type="text" class="form-control" name="tgl" required="" value="<?php echo $output['nik']; ?>" disabled>
+                       </div>
+                     </div>
+                     <div class="form-group row">
+                       <label class="col-md-4 text-md-right text-left">Alamat Email</label>
+                       <div class="col-lg-4 col-md-6">
+                         <input type="text" class="form-control" name="tgl" required="" value="<?php echo $output['mail']; ?>" disabled>
+                       </div>
+                     </div>
+                     <div class="form-group row">
                        <label class="col-md-4 text-md-right text-left">Tanggal lahir</label>
                        <div class="col-lg-4 col-md-6">
                          <input type="text" class="form-control datepicker" name="tgl" required="" value="<?php echo $output['tgl_lahir']; ?>" disabled>
@@ -106,17 +119,19 @@
                      <div class="form-group row">
                        <label class="col-md-4 text-md-right text-left">Alamat</label>
                        <div class="col-lg-4 col-md-6">
-                        <input type="number" class="form-control" name="berat" required="" value="<?php echo $output['alamat']; ?>" disabled>
+                         <textarea disabled type="text" class="form-control" name="alamat" required="" id="getAlamat"><?php echo $output['alamat']; ?></textarea>
                          <div class="invalid-feedback">
                            Mohon data diisi!
                          </div>
+                         <?php if ($output['tgl_lahir'] == "0" OR $output['tinggi_badan'] = "0" OR $output['berat_badan'] = "0" OR $output['alamat'] = '') {
+                                    echo "Lengkapi data diri anda!";} ?>
                        </div>
                      </div>
-                     <form method="POST" action="detail_pasien.php">
-                        <span data-target="#editPasien" data-toggle="modal" data-id="<?php echo $idpasien; ?>" data-nama="<?php echo $row['nama_pasien']; ?>" data-lahir="<?php echo $row['tgl_lahir']; ?>" data-tinggi="<?php echo $row['tinggi_badan']; ?>" data-berat="<?php echo $row['berat_badan']; ?>">
+                     <form method="POST" action="detail_pasien_pasien.php">
+                        <span data-target="#editPasien" data-toggle="modal" data-id="<?php echo $idpasien; ?>" data-nama="<?php echo $output['nama_pasien']; ?>" data-lahir="<?php echo $output['tgl_lahir']; ?>" data-tinggi="<?php echo $output['tinggi_badan']; ?>" data-berat="<?php echo $output['berat_badan']; ?>">
                           <a class="btn btn-primary btn-action mr-1" title="Edit Data Pasien" data-toggle="tooltip">Edit Data</a>
                         </span>
-                      </form>
+                     </form>
                   </div>
                 </div>
               </div>
@@ -148,6 +163,15 @@
                   <label class="col-sm-3 col-form-label">Tanggal lahir</label>
                   <div class="form-group col-sm-9">
                     <input type="text" class="form-control datepicker" id="getTgl" name="tgl">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">NIK</label>
+                  <div class="input-group col-sm-9">
+                    <input type="number" class="form-control" name="nik" required="" id="getNik">
+                    <div class="invalid-feedback">
+                      Mohon data diisi!
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -190,7 +214,7 @@
             </div>
             <div class="modal-footer bg-whitesmoke br">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" name="submit">Edit</button>
+              <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
               </form>
             </div>
           </div>
@@ -209,14 +233,18 @@
       var nama = button.data('nama')
       var id = button.data('id')
       var tgl = button.data('lahir')
+      var nik = button.data('nik')
       var berat = button.data('berat')
       var tinggi = button.data('tinggi')
+      var alamat = button.data('alamat')
       var modal = $(this)
       modal.find('#getId').val(id)
       modal.find('#getNama').val(nama)
       modal.find('#getTgl').val(tgl)
+      modal.find('#getNik').val(nik)
       modal.find('#getBerat').val(berat)
       modal.find('#getTinggi').val(tinggi)
+      modal.find('#getAlamat').val(alamat)
     })
   </script>
 </body>
