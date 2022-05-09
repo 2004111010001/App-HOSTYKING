@@ -18,7 +18,11 @@
           }, function() {
               <?php
                 if ($tipe == "ruang_inap") {
+<<<<<<< HEAD
                     echo 'window.location.href="../ruangan.php";';
+=======
+                    echo 'window.location.href="../ruangan_admin.php";';
+>>>>>>> Master
                 } else {
                     echo 'window.location.href="../'.$tipe.'.php";';
                 }
