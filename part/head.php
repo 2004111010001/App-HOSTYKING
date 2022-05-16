@@ -1,10 +1,6 @@
    <meta charset="UTF-8">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-<<<<<<< HEAD
-   <title>HOSTYKING - <?php echo $page; ?></title>
-=======
    <title><?php echo $page; ?></title>
->>>>>>> Master
    <link rel="shortcut icon" type="image/x-icon" href="assets/img/Logo.png" />
 
    <!-- General CSS Files -->
@@ -43,11 +39,7 @@
          font-size: inherit;
       }
 
-<<<<<<< HEAD
-      /*auto completenya dirawat jalan */
-=======
       /*auto completenya dibooking */
->>>>>>> Master
       .autocomplete {
          position: relative;
          display: inline-block;

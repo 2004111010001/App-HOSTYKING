@@ -1,10 +1,6 @@
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
-<<<<<<< HEAD
---
-=======
->>>>>>> Master
 -- Host: 127.0.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
