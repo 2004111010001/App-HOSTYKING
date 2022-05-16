@@ -112,10 +112,7 @@
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h4><?php echo $page; ?></h4>
-										<div class="card-header-action">
-											<a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Pegawai</a>
-										</div>
+										<h4><?php echo "Data Pegawai yang Ada Di Rumah Sakit"; ?></h4>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">
@@ -128,7 +125,6 @@
 														<th>Nama Pegawai</th>
 														<th>Alamat</th>
 														<th>Pekerjaan</th>
-														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -150,12 +146,7 @@
 																} ?>
 										</div>
 										</td>
-										<td>
-											<span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
-												<a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
-											</span>
-											<a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
-										</td>
+										
 										</tr>
 									<?php } ?>
 									</tbody>

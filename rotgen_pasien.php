@@ -32,9 +32,6 @@
                 <div class="card">
                   <div class="card-header">
                     <h4>Pasien yang memiliki foto rotgen</h4>
-                    <div class="card-header-action">
-                      <a href="booking_pasien.php" class="btn btn-primary">Tambah Foto Rotgen</a>
-                    </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -46,7 +43,6 @@
                             <th>Jumlah Foto Rotgen</th>
                             <th>Nama Penyakit</th>
                             <th>Biaya</th>
-                            <th class="text-center">Action</th>
                           </tr>
                         </thead>
                         <tbody>
