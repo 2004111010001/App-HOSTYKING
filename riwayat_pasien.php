@@ -131,6 +131,14 @@
                         <span data-target="#editPasien" data-toggle="modal" data-id="<?php echo $idpasien; ?>" data-nama="<?php echo $output['nama_pasien']; ?>" data-lahir="<?php echo $output['tgl_lahir']; ?>" data-tinggi="<?php echo $output['tinggi_badan']; ?>" data-berat="<?php echo $output['berat_badan']; ?>">
                           <a class="btn btn-primary btn-action mr-1" title="Edit Data Pasien" data-toggle="tooltip">Edit Data</a>
                         </span>
+                      <?php if ($output['tgl_lahir'] == "0" OR $output['tinggi_badan'] = "0" OR $output['berat_badan'] = "0" OR $output['alamat'] = '') { ?>
+												<span data-toggle="tooltip" title="Data belum lengkap!">
+													<a class="btn btn-primary disabled btn-action mr-1">Info Detail</a>
+												</span>
+											<?php } else { ?>
+												<input type="hidden" name="id" value="<?php echo $output['nama_pasien']; ?>">
+                        <button type="submit" class="btn btn-info" name="detail" title="Menampilkan semua foto rotgen" data-toggle="tooltip">Info Detail</button>
+                      <?php } ?>
                      </form>
                   </div>
                 </div>
