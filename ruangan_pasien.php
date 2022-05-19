@@ -83,9 +83,7 @@
 								<div class="card">
 									<div class="card-header">
 										<h4><?php echo $page; ?></h4>
-										<div class="card-header-action">
-											<a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Ruangan</a>
-										</div>
+										
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">
@@ -98,7 +96,6 @@
 														<th>Dipakai Oleh</th>
 														<th>Status</th>
 														<th>Harga per hari</th>
-														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -139,25 +136,6 @@
 										</div>
 										</td>
 										<td>Rp. <?php echo number_format($row['biaya'], 0, ".", "."); ?></td>
-										<td>
-											<?php if ($row['status'] == '1') { ?>
-												<span data-toggle="tooltip" title="Status masih dipakai, Data tidak dapat diedit">
-													<a class="btn btn-primary disabled btn-action mr-1"><i class="fas fa-pencil-alt"></i></a>
-												</span>
-												<span data-toggle="tooltip" title="Status masih dipakai, Data tidak dapat dihapus">
-													<a class="btn btn-danger disabled btn-action mr-1"><i class="fas fa-trash"></i></a>
-												</span>
-												<a data-toggle="tooltip" title="Konfirmasi pasien keluar" class="btn btn-warning btn-action mr-1" data-confirm="Pasien Keluar|Apakah benar pasien yang bernama <b><?php echo ucwords($namapasien["nama_pasien"]) ?></b> akan keluar?" data-confirm-yes="location.reload(); window.open('updateriwayat.php?id=<?php echo $defpasien; ?>', '_blank');"><i class="ion-log-out"></i></a>
-											<?php } else { ?>
-												<span data-target="#editRuang" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_ruang']; ?>" data-harga="<?php echo $row['biaya']; ?>">
-													<a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
-												</span>
-												<a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete.php?type=ruang_inap&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
-												<span data-target="#editRuang" data-toggle="modal">
-													<a data-toggle="tooltip" title="Pasien masuk" class="btn btn-success btn-action" href="booking_pasien.php"><i class="ion-log-in"></i></a>
-												</span>
-											<?php } ?>
-										</td>
 										</tr>
 									<?php } ?>
 									</tbody>

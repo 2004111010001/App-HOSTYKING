@@ -20,7 +20,7 @@
                 if ($tipe == "ruang_inap") {
                     echo 'window.location.href="../ruangan_admin.php";';
                 } else {
-                    echo 'window.location.href="../'.$tipe.'.php";';
+                    echo 'window.location.href="../'.$tipe.'_admin.php";';
                 }
                 ?>
           });

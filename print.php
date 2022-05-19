@@ -70,7 +70,7 @@ if (isset($_POST['printall'])) {
                     <td> : <?php echo tgl_indo($pasien['tgl_lahir']); ?></td>
                   </tr>
                   <tr>
-                    <th scope="row">Tinggi Bandan</th>
+                    <th scope="row">Tinggi Badan</th>
                     <td> : <?php echo $pasien['tinggi_badan'] . " cm"; ?></td>
                   </tr>
                   <tr>
