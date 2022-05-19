@@ -315,7 +315,7 @@
                             <div class="form-group row mb-4">
                               <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Diagnosa</label>
                               <div class="col-sm-12 col-md-7">
-                                <textarea placeholder="Wajib" class="summernote" name="diagnosa">Wajib Diisi</textarea>
+                                <textarea class="summernote" name="diagnosa" placeholder="Wajib Diisi!" ></textarea>
                               </div>
                             </div>
                             <div class="form-group row mb-4">

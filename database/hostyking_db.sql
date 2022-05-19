@@ -48,8 +48,8 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id`, `nama_obat`, `stok`, `harga`) VALUES
-(1, 'parashitamol', 1000, 500),
-(2, 'antibilotil', 10, 5000);
+(1, 'paracetamol', 1000, 500),
+(2, 'antibiotik', 1000, 5000);
 
 -- --------------------------------------------------------
 
@@ -59,13 +59,6 @@ INSERT INTO `obat` (`id`, `nama_obat`, `stok`, `harga`) VALUES
 
 CREATE TABLE `pasien` (
   `id` int(11) NOT NULL,
-<<<<<<< HEAD
-  `nama_pasien` varchar(200) NOT NULL,
-  `tgl_lahir` varchar(200) NOT NULL,
-  `tinggi_badan` int(11) NOT NULL,
-  `berat_badan` int(11) NOT NULL,
-  `alamat` text NOT NULL
-=======
   `mail` varchar(200) NOT NULL,
   `nama_pasien` varchar(200) NOT NULL,
   `tgl_lahir` varchar(200) NOT NULL,
@@ -75,10 +68,16 @@ CREATE TABLE `pasien` (
   `alamat` text NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL
->>>>>>> Master
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
+
+--
+-- Dumping data untuk tabel `pasien`
+--
+
+INSERT INTO `pasien` (`id`, `mail`, `nama_pasien`, `tgl_lahir`, `nik`, `tinggi_badan`, `berat_badan`, `alamat`, `username`, `password`) VALUES
+(1, 'butet1611@gmail.com', 'Butet Susanto', '2001-11-16', '12345678910', 170, '65', 'Limpok', 'Butet', 'butetpasien');
 
 --
 -- Struktur dari tabel `pegawai`
@@ -171,6 +170,20 @@ INSERT INTO `ruang_inap` (`id`, `nama_ruang`, `id_pasien`, `tgl_masuk`, `jam_mas
 (4, 'Kaktus', NULL, NULL, '', 0, 550000);
 
 --
+-- Struktur dari tabel `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `id_pasien` int(11) NOT NULL,
+  `nama_pasien` varchar(200) NOT NULL,
+  `dokter_pilih` varchar(200) NOT NULL,
+  `tanggal` varchar(200) NOT NULL,
+  `pukul` varchar(200) NOT NULL,
+  `fasilitas` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
 -- Indexes for dumped tables
 --
 
@@ -226,6 +239,13 @@ ALTER TABLE `ruang_inap`
   ADD UNIQUE KEY `id_pasien` (`id_pasien`);
 
 --
+-- Indeks untuk tabel `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pasien` (`id_pasien`);
+  
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -277,6 +297,12 @@ ALTER TABLE `riwayat_rawatinap`
 ALTER TABLE `ruang_inap`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
+
+--
+-- AUTO_INCREMENT untuk tabel `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -13,7 +13,7 @@
   $cekrow = mysqli_num_rows($cek);
   $tokne = mysqli_fetch_array($cek);
   $tglnow = date('Y-m-d');
-
+  
   if (isset($_POST['jalan1'])) {
     if ($cekrow == 0) {
       mysqli_query($conn, "INSERT INTO pasien (nama_pasien, tinggi_badan, berat_badan) VALUES ('$nama', '0', '0')");
@@ -21,7 +21,7 @@
     } else {
       echo '<script>
 				setTimeout(function() {
-					swal({
+          swal({
 						title: "Pasien Telah Terdaftar!",
 						text: "Pasien yang bernama ' . ucwords($tokne['nama_pasien']) . ' sudah terdaftar, silahkan lanjutkan ke menu selanjutnya",
 						icon: "success"
@@ -32,6 +32,7 @@
   }
 
   if (isset($_POST['jalan2'])) {
+    $idpasien = $_POST['id'];
     $namamu = $_POST['nama'];
     @$tgl = $_POST['tgl'];
     $berat = $_POST['berat'];
@@ -39,15 +40,16 @@
     $alam = $_POST['alamat'];
 
     mysqli_query($conn, "UPDATE pasien SET alamat='$alam', tgl_lahir='$tgl', berat_badan='$berat', tinggi_badan='$tinggi' WHERE nama_pasien='$namamu'");
+    mysqli_query($conn, "INSERT INTO booking (id_pasien, nama_pasien) VALUES ('$idpasien', '$namamu')");
   }
 
   if (isset($_POST['jalan3'])) {
-    $idpasien = $_POST['id'];
-    $penyakit = $_POST['penyakit'];
-    $diagnosa = $_POST['diagnosa'];
-    $biaya = $_POST['biaya'];
-
-    mysqli_query($conn, "INSERT INTO riwayat_penyakit (id_pasien, penyakit, diagnosa, tgl, id_rawatinap, biaya_pengobatan) VALUES ('$idpasien', '$penyakit', '$diagnosa', '$tglnow', '0', '$biaya')");
+    @$idpegawai = $_POST['id'];
+    $namedokter = $_POST['dokter'];
+    $jadwal = $_POST['jadwal'];
+    $dokter = mysqli_query($conn, "SELECT * FROM pegawai WHERE id='$idpegawai'");
+    $datadokter = mysqli_fetch_array($dokter);
+    $namadokter = $datadokter['nama_pegawai'];
   }
 
   if (isset($_POST['submitfoto'])) {
@@ -82,20 +84,22 @@
 			</script>';
   }
 
-  if (isset($_POST['rawatinap'])) {
-    $idpasien = $_POST['id'];
-    $penyakit = $_POST['penyakit'];
-    $idruang = $_POST['ruang'];
-    $kodestatus = "tmp" . $idruang;
-    $nama = $_POST['namaruang'];
-
-    mysqli_query($conn, "UPDATE ruang_inap SET id_pasien='$idpasien', tgl_masuk='$tglnow', status='1' WHERE id='$idruang'");
-    mysqli_query($conn, "UPDATE riwayat_penyakit SET id_rawatinap='$kodestatus' WHERE id_pasien='$idpasien'");
+  if (isset($_POST['pilih_dokter'])) {
+    $id_dokter = $_POST['dokter'];
+    $tanggal = $_POST['tanggal'];
+    $pukul = $_POST['pukul'];
+    $dokter = mysqli_query($conn, "SELECT * FROM pegawai WHERE id='$id_dokter'");
+    $datadokter = mysqli_fetch_array($dokter);
+    $namadokter = $datadokter['nama_pegawai'];
+    $last = mysqli_query($conn, "SELECT * FROM booking ORDER BY id DESC LIMIT 1");
+    $id = mysqli_fetch_array($last);
+    $id_book = $id['id'];
+    mysqli_query($conn, "UPDATE booking SET dokter_pilih='$namadokter', tanggal='$tanggal', pukul='$pukul' WHERE id='$id_book'");
     echo '<script>
 				setTimeout(function() {
 					swal({
-						title: "Kamar dipesan!",
-						text: "Kamar ' . $nama . ' Berhasil Dipesan",
+						title: "Dokter Dipilih!",
+						text: "Dokter ' . $namadokter . ' Berhasil Dipilih",
 						icon: "success"
 						});
 					}, 500);
@@ -103,13 +107,11 @@
   }
 
   if (isset($_POST['pesanobat'])) {
-    $idpasien = $_POST['id'];
-    $penyakit = $_POST['penyakit'];
-    $jum = $_POST['jumlah'];
-    $cekriwayat = mysqli_query($conn, "SELECT * FROM `riwayat_penyakit` WHERE penyakit='$penyakit' AND id_pasien='$idpasien' ORDER BY id DESC LIMIT 1");
-    $datapasien = mysqli_fetch_array($cekriwayat);
-    $idpas = $datapasien['id_pasien'];
-    $idpeny = $datapasien['id'];
+    $fasilitas = $_POST['fasilitas'];
+    $last = mysqli_query($conn, "SELECT * FROM booking ORDER BY id DESC LIMIT 1");
+    $id = mysqli_fetch_array($last);
+    $id_book = $id['id'];
+    mysqli_query($conn, "UPDATE booking SET fasilitas='$fasilitas' WHERE id='$id_book'");
 
     if (isset($_POST["obat"])) {
       foreach ($_POST['obat'] as $obat) {
@@ -120,8 +122,8 @@
     echo '<script>
 				setTimeout(function() {
 					swal({
-						title: "Obat Dibeli!",
-						text: "Obat berhasil dibeli",
+						title: "Fasilitas Dipilih!",
+						text: "Fasilitas berhasil dipilih",
 						icon: "success"
 						});
 					}, 500);
@@ -129,15 +131,13 @@
   }
 
   if (isset($_POST['print'])) {
-    $idpasien = $_POST['id'];
-    $penyakit = $_POST['penyakit'];
-
-    $tolologi = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE penyakit='$penyakit' AND id_pasien='$idpasien' ORDER BY id DESC LIMIT 1");
+    $tolologi = mysqli_query($conn, "SELECT * FROM booking ORDER BY id DESC LIMIT 1");
     $lol = mysqli_fetch_array($tolologi);
-    $tolologi2 = mysqli_query($conn, "SELECT * FROM pasien WHERE id='$idpasien'");
+    $id_book = $lol['id_pasien'];
+
+    $tolologi2 = mysqli_query($conn, "SELECT * FROM pasien WHERE id='$id_book'");
     $lol2 = mysqli_fetch_array($tolologi2);
-    $penyyy = $lol['id'];
-    $passs = $lol2['nama_pasien'];
+    $idpasien = $lol2['id'];
   }
   ?>
 </head>
@@ -164,7 +164,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Masukkan Data serta Tindakan untuk Pasien</h4>
+                    <h4>Masukkan / Lengkapi Data Diri dan Booking!</h4>
                   </div>
                   <div class="card-body">
                     <div class="row mt-4">
@@ -175,10 +175,10 @@
                               <i class="far fa-user"></i>
                             </div>
                             <div class="wizard-step-label">
-                              Identitas Pasien
+                              Nama Anda
                             </div>
                           </div>
-                          <div class="wizard-step <?php echo (isset($_POST['jalan1']) || isset($_POST['jalan2']) || isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['rawatinap']) || isset($_POST['pesanobat']) || isset($_POST['print'])) ? "wizard-step-active" : ""; ?>">
+                          <div class="wizard-step <?php echo (isset($_POST['jalan1']) || isset($_POST['jalan2']) || isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['pilih_dokter']) || isset($_POST['pesanobat']) || isset($_POST['print'])) ? "wizard-step-active" : ""; ?>">
                             <div class="wizard-step-icon">
                               <i class="fas fa-server"></i>
                             </div>
@@ -186,20 +186,20 @@
                               Informasi Umum
                             </div>
                           </div>
-                          <div class="wizard-step <?php echo (isset($_POST['jalan2']) || isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['rawatinap']) || isset($_POST['pesanobat']) || isset($_POST['print'])) ? "wizard-step-active" : ""; ?>">
+                          <div class="wizard-step <?php echo (isset($_POST['jalan2']) || isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['pilih_dokter']) || isset($_POST['pesanobat']) || isset($_POST['print'])) ? "wizard-step-active" : ""; ?>">
                             <div class="wizard-step-icon">
                               <i class="fas fa-stethoscope"></i>
                             </div>
                             <div class="wizard-step-label">
-                              Pemeriksaan
+                              Pilih Jadwal Pemeriksaan
                             </div>
                           </div>
-                          <div class="wizard-step <?php echo (isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['rawatinap']) || isset($_POST['pesanobat']) || isset($_POST['print'])) ? "wizard-step-active" : ""; ?>">
+                          <div class="wizard-step <?php echo (isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['pilih_dokter']) || isset($_POST['pesanobat']) || isset($_POST['print'])) ? "wizard-step-active" : ""; ?>">
                             <div class="wizard-step-icon">
                               <i class="fas fa-briefcase-medical"></i>
                             </div>
                             <div class="wizard-step-label">
-                              Tindakan yang dilakukan
+                              Fasilitas yang Dibutuhkan
                             </div>
                           </div>
                           <div class="wizard-step <?php echo (isset($_POST['print'])) ? "wizard-step-active" : ""; ?>">
@@ -207,7 +207,7 @@
                               <i class="fas fa-print"></i>
                             </div>
                             <div class="wizard-step-label">
-                              Cetak Struk
+                              Cetak Formulir
                             </div>
                           </div>
                         </div>
@@ -221,9 +221,9 @@
                           <!-- PART 1 -->
 
                           <div class="form-group row align-items-center">
-                            <label class="col-md-4 text-md-right text-left">Nama Lengkap / ID</label>
+                             <label class="col-md-4 text-md-right text-left">Nama Lengkap</label>
                             <div class="col-lg-4 col-md-6">
-                              <input id="myInput" type="text" class="form-control" name="nama" placeholder="Nama / ID Calon Pasien">
+                              <input id="myInput" type="text" class="form-control" name="nama" placeholder="Masukkan nama anda">
                               <div class="invalid-feedback">
                                 Mohon data diisi!
                               </div>
@@ -243,6 +243,7 @@
                           <div class="form-group row align-items-center">
                             <label class="col-md-4 text-md-right text-left">Nama Lengkap</label>
                             <div class="col-lg-4 col-md-6">
+                              <input type="hidden" name="id" class="form-control" required="" value="<?php echo $tokne['id']; ?>">
                               <input type="hidden" name="nama" class="form-control" required="" value="<?php echo $tokne['nama_pasien']; ?>">
                               <input type="text" class="form-control" required="" value="<?php echo $tokne['nama_pasien']; ?>" disabled>
                             </div>
@@ -250,7 +251,7 @@
                           <div class="form-group row">
                             <label class="col-md-4 text-md-right text-left">Tanggal lahir</label>
                             <div class="col-lg-4 col-md-6">
-                              <input type="text" class="form-control datepicker" name="tgl" required="" value="<?php echo $tokne['tgl_lahir']; ?>">
+                              <input type="text" class="form-control datepicker" name="tgl" required="">
                             </div>
                           </div>
                           <div class="form-group row">
@@ -302,44 +303,40 @@
                           <!-- PART 3 -->
 
                           <div class="card-body">
-                            <div class="form-group row mb-4">
-                              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Penyakit</label>
-                              <div class="col-sm-12 col-md-7">
-                                <input type="hidden" class="form-control" name="id" required="" value="<?php echo $tokne['id']; ?>">
-                                <input type="text" class="form-control" name="penyakit" required="">
-                                <div class="invalid-feedback">
-                                  Mohon data diisi!
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Diagnosa</label>
-                              <div class="col-sm-12 col-md-7">
-                                <textarea placeholder="Wajib" class="summernote" name="diagnosa">Wajib Diisi</textarea>
-                              </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Biaya Pemeriksaan</label>
-                              <div class="input-group col-sm-12 col-md-7">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text">
-                                    Rp
-                                  </div>
-                                </div>
-                                <input type="number" class="form-control" name="biaya" required="" value="0">
-                                <div class="invalid-feedback">
-                                  Mohon data diisi!
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group row">
-                              <div class="col-md-6"></div>
-                              <div class="col-lg-4 col-md-6 text-right">
-                                <button class="btn btn-icon icon-right btn-primary" name="jalan3">Selanjutnya <i class="fas fa-arrow-right"></i></button>
-                              </div>
-                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped" id="table-1">
+                                <thead>
+                                  <tr>
+                                    <th>Nama Dokter</th>
+                                    <th>Tanggal</th>
+                                    <th>Pukul</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>
+                                        <select class="form-control select2" name="dokter">
+                                          <?php
+                                              $dokter = mysqli_query($conn, "SELECT * FROM pegawai");
+                                              while ($namadokter = mysqli_fetch_array($dokter)) {
+                                                echo "<option value='" . $namadokter['id'] . "'>" . $namadokter['nama_pegawai'] . "</option>";
+                                              }
+                                              ?>
+                                          </select>
+                                      </td>
+                                        <td><input type="date" class="form-control datepicker" name="tanggal" required="">
+                                      </td>
+                                      <td>
+                                        <input type="time" class="form-control" name="pukul">
+                                      <td>
+                                        <button class="btn btn-primary btn-action mr-1" name="pilih_dokter">Pilih <i class="fas fa-arrow-right"></i></button>
+                                      </td>
+                          </tr>
+                        </tbody>
+                      </table>
                           <?php }
-                        if (isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['rawatinap']) || isset($_POST['pesanobat'])) { ?>
+                        if (isset($_POST['jalan3']) || isset($_POST['submitfoto']) || isset($_POST['pilih_dokter']) || isset($_POST['pesanobat'])) { ?>
 
                             <!-- PART 4 -->
 
@@ -347,13 +344,7 @@
                               <div class="col-12 col-sm-12 col-md-4">
                                 <ul class="nav nav-pills flex-column" id="myTab4" role="tablist">
                                   <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab4" data-toggle="tab" href="#home4" role="tab" aria-controls="home" aria-selected="true">Pemberian Obat</a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab4" data-toggle="tab" href="#profile4" role="tab" aria-controls="profile" aria-selected="false">Foto Rotgen</a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a class="nav-link" id="contact-tab4" data-toggle="tab" href="#contact4" role="tab" aria-controls="contact" aria-selected="false">Membutuhkan Rawat Inap</a>
+                                    <a class="nav-link active" id="home-tab4" data-toggle="tab" href="#home4" role="tab" aria-controls="home" aria-selected="true">Pilih Fasilitas</a>
                                   </li>
                                 </ul>
                               </div>
@@ -361,117 +352,28 @@
                                 <div class="tab-content no-padding" id="myTab2Content">
                                   <div class="tab-pane fade show active" id="home4" role="tabpanel" aria-labelledby="home-tab4">
                                     <div class="form-group row mb-4">
-                                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Obat yang dibutuhkan</label>
+                                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Fasilitas yang dibutuhkan</label>
                                       <div class="col-sm-12 col-md-7">
-                                        <input type="hidden" class="form-control" name="id" required="" value="<?php echo $idpasien; ?>">
-                                        <input type="hidden" class="form-control" name="penyakit" required="" value="<?php echo $penyakit; ?>">
-                                        <select class="form-control select2" name="obat[]" multiple="">
-                                          <?php
-                                          $obat2an = mysqli_query($conn, "SELECT * FROM obat WHERE stok >= 1");
-                                          while ($obat = mysqli_fetch_array($obat2an)) {
-                                            echo "<option value='" . $obat['id'] . "'>" . $obat['nama_obat'] . "</option>";
-                                          }
-                                          ?>
+                                        <select class="form-control select2" name="fasilitas">
+                                          <option value="Foto Rontgen">Foto Rontgen</option>
+                                          <option value="Ruang Inap">Ruang Inap</option>
+                                          <option value="Check Up">Check Up</option>
                                         </select>
+                                        
                                       </div>
                                     </div>
-                                    <div class="form-group row mb-4">
-                                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jumlah Obat</label>
-                                      <div class="col-sm-12 col-md-7">
-                                        <input type="number" class="form-control" name="jumlah" required="" value="0">
-                                        <div class="invalid-feedback">
-                                          Mohon data diisi!
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-group row">
-                                      <div class="col-md-6"></div>
-                                      <div class="col-lg-4 col-md-6 text-right">
-                                        <input type="submit" class="btn btn-icon icon-right btn-primary" name="pesanobat" value="Beli Obat">
-                                        <input type="submit" class="btn btn-icon icon-right btn-success" name="print" value="Selesai">
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="tab-pane fade" id="profile4" role="tabpanel" aria-labelledby="profile-tab4">
-                                    <div class="card-body">
-                                      <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Pilih Foto</label>
-                                        <div class="col-sm-12 col-md-7">
-                                          <input type="hidden" class="form-control" name="id" required="" value="<?php echo $idpasien; ?>">
-                                          <input type="hidden" class="form-control" name="penyakit" required="" value="<?php echo $penyakit; ?>">
-                                          <input id='upload' class="form-control" name="upload[]" type="file" multiple="multiple" />
-                                          <div class="invalid-feedback">
-                                            Mohon data diisi!
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Total Biaya</label>
-                                        <div class="input-group col-sm-12 col-md-7">
-                                          <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                              Rp
-                                            </div>
-                                          </div>
-                                          <input type="number" class="form-control" name="biaya" required="" value="0">
-                                          <div class="invalid-feedback">
-                                            Mohon data diisi!
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="form-group row">
+                                        <div class="form-group row">
                                         <div class="col-md-6"></div>
-                                        <div class="col-lg-4 col-md-6 text-right">
-                                          <input type="submit" class="btn btn-icon icon-right btn-primary" name="submitfoto" value="Upload Foto">
-                                          <input type="submit" class="btn btn-icon icon-right btn-success" name="print" value="Selesai">
+                                          <div class="col-lg-4 col-md-6 text-right">
+                                            <input type="submit" class="btn btn-icon icon-right btn-primary" name="pesanobat" value="Pilih Fasilitas">
+                                            <input type="submit" class="btn btn-icon icon-right btn-success" name="print" value="Selesai">
+                                          </div>
                                         </div>
+                                      </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="tab-pane fade" id="contact4" role="tabpanel" aria-labelledby="contact-tab4">
-                                    <div class="table-responsive">
-                                      <?php
-                                      $kepake = mysqli_query($conn, "SELECT * FROM ruang_inap WHERE id_pasien='$idpasien'");
-                                      $sql = mysqli_query($conn, "SELECT * FROM ruang_inap WHERE status='0'");
-                                      if (mysqli_num_rows($sql) == 0) {
-                                        echo "Kamar sudah penuh";
-                                      } else {
-                                        $kapakegak = mysqli_num_rows($kepake);
-                                        if ($kapakegak == 0) {
-                                      ?>
-                                          <table class="table table-striped" id="table-1">
-                                            <thead>
-                                              <tr>
-                                                <th>Nama Ruangan</th>
-                                                <th>Harga per hari</th>
-                                                <th>Action</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <?php
-                                              while ($row = mysqli_fetch_array($sql)) {
-                                              ?>
-                                                <tr>
-                                                  <th><?php echo ucwords($row['nama_ruang']); ?></th>
-                                                  <td>Rp. <?php echo number_format($row['biaya'], 0, ".", "."); ?></td>
-                                                  <td>
-                                                    <input type="hidden" name="id" required="" value="<?php echo $idpasien; ?>">
-                                                    <input type="hidden" name="namaruang" required="" value="<?php echo $row['nama_ruang']; ?>">
-                                                    <input type="hidden" name="ruang" value="<?php echo $row['id'] ?>" required="">
-                                                    <button class="btn btn-primary btn-action mr-1" name="rawatinap"><i class="fas fa-arrow-right"></i></button>
-                                                    <input type="submit" class="btn btn-icon icon-right btn-success" name="print" value="Selesai">
-                                                  <?php }
-                                                  ?>
-                                                  </td>
-                                                </tr>
-                                            </tbody>
-                                          </table>
-                                      <?php } else {
-                                          echo 'Pasien sudah memesan kamar';
-                                        }
-                                      } ?>
-                                    </div>
-                                  </div>
+                                </div>
                                 </div>
                               </div>
                             </div>
@@ -482,12 +384,12 @@
 
                       <!-- PART 5 -->
                       <div class="wizard-pane text-center">
-                      <form method="POST" action="print.php" target="_blank">
-                        <input type="hidden" name="id" value="<?php echo $passs; ?>">
-                        <input type="hidden" name="idriwayat" value="<?php echo $penyyy; ?>">
+                      <form method="POST" action="print_pasien.php" target="_blank">
+                        <input type="hidden" name="id" value="<?php echo $idpasien; ?>">
+                        <input type="hidden" name="id_book" value="<?php echo $id_book; ?>">
                         <div class="btn-group">
                           <a href="booking_pasien.php"class="btn btn-info" title="Ke Menu Utama" data-toggle="tooltip">Ke Menu Utama</a>
-                          <button type="submit" class="btn btn-primary" name="printone" title="Print" data-toggle="tooltip"><i class="fas fa-print"></i> Cetak Struk Pembayaran</button>
+                          <button type="submit" class="btn btn-primary" name="printone" title="Print" data-toggle="tooltip"><i class="fas fa-print"></i> Cetak Formulir</button>
                         </div>
                       </form>
                       </div>
