@@ -56,9 +56,6 @@
                     <div class="card-header-action">
                       <a href="tindakan_admin.php" class="btn btn-primary">Daftar pasien baru</a>
                     </div>
-                    <div class="card-header-action">
-                      <a href="pasien_book_pasien.php" class="btn btn-primary">Pasien yang Telah Booking</a>
-                    </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">

@@ -39,11 +39,7 @@
          font-size: inherit;
       }
 
-<<<<<<< HEAD
-      /*auto completenya dirawat jalan */
-=======
       /*auto completenya dibooking */
->>>>>>> Master
       .autocomplete {
          position: relative;
          display: inline-block;

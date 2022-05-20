@@ -1,10 +1,7 @@
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
-<<<<<<< HEAD
 --
-=======
->>>>>>> Master
 -- Host: 127.0.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -63,13 +60,6 @@ INSERT INTO `obat` (`id`, `nama_obat`, `stok`, `harga`) VALUES
 
 CREATE TABLE `pasien` (
   `id` int(11) NOT NULL,
-<<<<<<< HEAD
-  `nama_pasien` varchar(200) NOT NULL,
-  `tgl_lahir` varchar(200) NOT NULL,
-  `tinggi_badan` int(11) NOT NULL,
-  `berat_badan` int(11) NOT NULL,
-  `alamat` text NOT NULL
-=======
   `mail` varchar(200) NOT NULL,
   `nama_pasien` varchar(200) NOT NULL,
   `tgl_lahir` varchar(200) NOT NULL,
@@ -79,7 +69,6 @@ CREATE TABLE `pasien` (
   `alamat` text NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL
->>>>>>> Master
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

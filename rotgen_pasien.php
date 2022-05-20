@@ -31,7 +31,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Pasien yang memiliki foto rotgen</h4>
+                    <h4>Foto rotgen saya</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
