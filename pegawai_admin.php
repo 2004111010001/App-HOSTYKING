@@ -12,18 +12,12 @@
 		$id = $_POST['iduser'];
 		$nama = $_POST['nama'];
 		$user = $_POST['username'];
-		$senin = $_POST['senin'];
-		$selasa = $_POST['selasa'];
-		$rabu = $_POST['rabu'];
-		$kamis = $_POST['kamis'];
-		$jumat = $_POST['jumat'];
-		$sabtu = $_POST['sabtu'];
 		$alam = $_POST['alamat'];
 		$old_pass = $_POST['old_password'];
 		$new_pass = $_POST['new_password'];
 
 		if ($old_pass == "" && $new_pass == "") {
-			$up1 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', alamat='$alam', senin='$senin', selasa='$selasa', rabu='$rabu', kamis='$kamis', jumat='$jumat', sabtu='$sabtu' WHERE id='$id'");
+			$up1 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', alamat='$alam' WHERE id='$id'");
 			echo '<script>
 			setTimeout(function() {
 				swal({
@@ -67,12 +61,6 @@
 		$alam = $_POST['alamat'];
 		$pass = $_POST['password'];
 		$job = $_POST['pekerjaan'];
-		$senin = $_POST['senin'];
-		$selasa = $_POST['selasa'];
-		$rabu = $_POST['rabu'];
-		$kamis = $_POST['kamis'];
-		$jumat = $_POST['jumat'];
-		$sabtu = $_POST['sabtu'];
 
 		$cekuser = mysqli_query($conn, "SELECT * FROM pegawai WHERE username='$user'");
 		$baris = mysqli_num_rows($cekuser);
@@ -87,7 +75,7 @@
 					}, 500);
 			</script>';
 		} else {
-			$add = mysqli_query($conn, "INSERT INTO pegawai (username, password, nama_pegawai, alamat, pekerjaan, senin, selasa, rabu, kamis, jumat, sabtu) VALUES ('$user', '$pass', '$nama', '$alam', '$job', '$senin', '$selasa', '$rabu', '$kamis', '$jumat', '$sabtu')");
+			$add = mysqli_query($conn, "INSERT INTO pegawai (username, password, nama_pegawai, alamat, pekerjaan) VALUES ('$user', '$pass', '$nama', '$alam', '$job')");
 			echo '<script>
 				setTimeout(function() {
 					swal({
@@ -218,54 +206,6 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label>Senin</label>
-								<select class="form-control selectric" name="senin">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Selasa</label>
-								<select class="form-control selectric" name="selasa">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Rabu</label>
-								<select class="form-control selectric" name="rabu">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Kamis</label>
-								<select class="form-control selectric" name="kamis">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>	
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Jumat</label>
-								<select class="form-control selectric" name="jumat">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Sabtu</label>
-								<select class="form-control selectric" name="sabtu">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
 								<label>Alamat</label>
 								<textarea class="form-control" required="" name="alamat"></textarea>
 							</div>
@@ -316,54 +256,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Senin</label>
-								<select class="form-control selectric" name="senin">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Selasa</label>
-								<select class="form-control selectric" name="selasa">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Rabu</label>
-								<select class="form-control selectric" name="rabu">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Kamis</label>
-								<select class="form-control selectric" name="kamis">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>	
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Jumat</label>
-								<select class="form-control selectric" name="jumat">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Sabtu</label>
-								<select class="form-control selectric" name="sabtu">
-									<option value="08.00-12.00">08.00-12.00</option>
-									<option value="14.00-16.00">14.00-18.00</option>
-									<option value="19.30-22.00">19.30-22.00</option>
-								</select>
-							</div>
-							<div class="form-group">
 								<label>Alamat</label>
 								<textarea class="form-control" required="" name="alamat" id="getAddrs"></textarea>
 							</div>
@@ -402,24 +294,12 @@
 			var nama = button.data('nama')
 			var user = button.data('user')
 			var alam = button.data('alam')
-			var senin = button.data('senin')
-			var selasa = button.data('selasa')
-			var rabu = button.data('rabu')
-			var kamis = button.data('kamis')
-			var jumat = button.data('jumat')
-			var sabtu = button.data('sabtu')
 			var id = button.data('id')
 			var modal = $(this)
 			modal.find('#getId').val(id)
 			modal.find('#getNama').val(nama)
 			modal.find('#getUser').val(user)
 			modal.find('#getAddrs').val(alam)
-			modal.find('#getSenin').val(senin)
-			modal.find('#getSelasa').val(selasa)
-			modal.find('#getRabu').val(rabu)
-			modal.find('#getKamis').val(kamis)
-			modal.find('#getJumat').val(jumat)
-			modal.find('#getSabtu').val(sabtu)
 		})
 	</script>
 </body>

@@ -125,7 +125,6 @@
 														<th>Nama Pegawai</th>
 														<th>Alamat</th>
 														<th>Pekerjaan</th>
-														<th>Hari, Jam Tugas</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -145,15 +144,6 @@
 																} else {
 																	echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
 																} ?>
-															<td>Senin: <?php echo ucwords($row['senin']); ?><br/>
-															Selasa: <?php echo ucwords($row['selasa']); ?><br/>
-															Rabu: <?php echo ucwords($row['rabu']); ?><br/>
-															Kamis: <?php echo ucwords($row['kamis']); ?><br/>
-															Jumat: <?php echo ucwords($row['jumat']); ?><br/>
-															Sabtu: <?php echo ucwords($row['sabtu']); ?><br/></td>
-										</div>
-										</td>
-										
 										</tr>
 									<?php } ?>
 									</tbody>

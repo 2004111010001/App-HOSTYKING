@@ -171,21 +171,29 @@
                   <label class="col-sm-3 col-form-label">Tanggal lahir</label>
                   <div class="form-group col-sm-9">
                     <input type="text" class="form-control datepicker" id="getTgl" name="tgl">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">NIK</label>
-                  <div class="input-group col-sm-9">
-                    <input type="number" class="form-control" name="nik" required="" id="getNik">
                     <div class="invalid-feedback">
                       Mohon data diisi!
                     </div>
                   </div>
                 </div>
                 <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">NIK</label>
+                  <div class="input-group col-sm-9">
+                    <input type="number" class="form-control" name="nik" required="" value="<?php echo $output['nik']; ?>" >
+                    <div class="invalid-feedback">
+                      Mohon data diisi!
+                    </div>
+                  </div>
+                </div>
+                <?php 
+                $nik = $output['nik'];
+                $data = mysqli_query($conn, "SELECT * FROM pasien WHERE nik=$nik");
+                $output = mysqli_fetch_array($data);
+                ?>
+                <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Berat Badan</label>
                   <div class="input-group col-sm-9">
-                    <input type="number" class="form-control" name="berat" required="" id="getBerat">
+                    <input type="number" class="form-control" name="berat" required="" value="<?php echo ucwords($output['berat_badan']); ?>">
                     <div class="input-group-prepend">
                       <div class="input-group-text">
                         Kg
@@ -199,7 +207,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Tinggi Badan</label>
                   <div class="col-sm-9 input-group">
-                    <input type="number" class="form-control" name="tinggi" required="" id="getTinggi">
+                    <input type="number" class="form-control" name="tinggi" required="" value="<?php echo $output['tinggi_badan']; ?>">
                     <div class="input-group-prepend">
                       <div class="input-group-text">
                         cm
@@ -213,7 +221,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Alamat</label>
                   <div class="col-sm-9">
-                    <textarea type="text" class="form-control" name="alamat" required="" id="getAlamat"></textarea>
+                    <textarea type="text" class="form-control" name="alamat" required="" value="<?php echo $output['alamat']; ?>"><?php echo $output['alamat']; ?></textarea>
                     <div class="invalid-feedback">
                       Mohon data diisi!
                     </div>
