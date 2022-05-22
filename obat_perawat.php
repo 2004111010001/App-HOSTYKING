@@ -51,8 +51,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_apoteker.php';
-      include 'part/sidebar_apoteker.php';
+      include 'part/navbar_perawat.php';
+      include 'part/sidebar_perawat.php';
       ?>
 
       <!-- Main Content -->
@@ -99,7 +99,7 @@
                                 <span data-target="#editObat" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_obat']; ?>" data-harga="<?php echo $row['harga']; ?>" data-stok="<?php echo $row['stok']; ?>">
                                   <a class="btn btn-primary btn-action mr-1" title="Edit Data Obat" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                 </span>
-                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_apoteker.php?type=obat&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_perawat.php?type=obat&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
                               </td>
                             </tr>
                           <?php } ?>

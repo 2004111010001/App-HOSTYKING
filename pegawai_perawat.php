@@ -96,8 +96,8 @@
 			<div class="navbar-bg"></div>
 
 			<?php
-			include 'part/navbar_apoteker.php';
-			include 'part/sidebar_apoteker.php';
+			include 'part/navbar_perawat.php';
+			include 'part/sidebar_perawat.php';
 			?>
 
 			<!-- Main Content -->
@@ -146,7 +146,7 @@
 																if ($row['pekerjaan'] == '1') {
 																	echo '<div class="badge badge-pill badge-primary mb-1">Dokter';
 																} else {
-																	echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
+																	echo '<div class="badge badge-pill badge-success mb-1">perawat';
 																} ?>
 										</div>
 										</td>
@@ -154,7 +154,7 @@
 											<span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
 												<a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
 											</span>
-											<a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_apoteker.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+											<a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_perawat.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
 										</td>
 										</tr>
 									<?php } ?>
@@ -202,7 +202,7 @@
 								<label>Pekerjaan</label>
 								<select class="form-control selectric" name="pekerjaan">
 									<option value="1">Dokter</option>
-									<option value="2">Apoteker</option>
+									<option value="2">Perawat</option>
 								</select>
 							</div>
 							<div class="form-group">

@@ -16,8 +16,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_apoteker.php';
-      include 'part/sidebar_apoteker.php';
+      include 'part/navbar_perawat.php';
+      include 'part/sidebar_perawat.php';
       ?>
 
       <!-- Main Content -->
@@ -68,7 +68,7 @@
                               <td>Rp. <?php echo number_format($row['biaya'], 0, ".", "."); ?></td>
                               <td align="center">
                                 <div class="btn-group">
-                                  <form method="POST" action="detail_rotgen_apoteker.php">
+                                  <form method="POST" action="detail_rotgen_perawat.php">
                                     <input type="hidden" name="id" value="<?php echo $pasien['nama_pasien']; ?>">
                                     <input type="hidden" name="idriwayat" value="<?php echo $idriwayat ?>">
                                     <button type="submit" class="btn btn-info" name="detail" title="Menampilkan semua foto rotgen" data-toggle="tooltip">Info Detail</button>

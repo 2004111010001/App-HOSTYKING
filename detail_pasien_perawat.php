@@ -21,8 +21,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_apoteker.php';
-      include 'part/sidebar_apoteker.php';
+      include 'part/navbar_perawat.php';
+      include 'part/sidebar_perawat.php';
       include 'part_func/umur.php';
       include 'part_func/tgl_ind.php';
       ?>
@@ -33,7 +33,7 @@
           <div class="section-header">
             <h1>Detail Pasien</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="pasien_apoteker.php">Data Pasien</a></div>
+              <div class="breadcrumb-item active"><a href="pasien_perawat.php">Data Pasien</a></div>
               <div class="breadcrumb-item">Detail Pasien : <?php echo ucwords($idnama); ?></div>
             </div>
           </div>
@@ -130,11 +130,11 @@
                                       if ($status == "tmp") {
                                         $ruang = mysqli_query($conn, "SELECT * FROM ruang_inap WHERE id='$idrawatinap'");
                                         $showruang = mysqli_fetch_array($ruang);
-                                        echo "<a href='ruangan_apoteker.php' title='Detail Ruang Rawat Inap Pasien' data-toggle='tooltip'><i class='fas fa-info-circle text-info'></i> Pasien masih dirawat di ruang " . $showruang['nama_ruang'] . " sejak tgl " . tgl_indo($showruang['tgl_masuk']) . "</a>";
+                                        echo "<a href='ruangan_perawat.php' title='Detail Ruang Rawat Inap Pasien' data-toggle='tooltip'><i class='fas fa-info-circle text-info'></i> Pasien masih dirawat di ruang " . $showruang['nama_ruang'] . " sejak tgl " . tgl_indo($showruang['tgl_masuk']) . "</a>";
                                       } else {
                                         $riw1 = mysqli_query($conn, "SELECT * FROM riwayat_rawatinap WHERE id='$idrawatinap'");
                                         $riwayatinap = mysqli_fetch_array($riw1);
-                                        echo "<a href='riwayat_inap_apoteker.php' title='Riwayat Rawat Inap Pasien' data-toggle='tooltip'><i class='fas fa-info-circle text-info'></i> Pasien pernah dirawat pada tgl " . tgl_indo($riwayatinap['2']) . ' - ' . tgl_indo($riwayatinap['3']) . "</a>";
+                                        echo "<a href='riwayat_inap_perawat.php' title='Riwayat Rawat Inap Pasien' data-toggle='tooltip'><i class='fas fa-info-circle text-info'></i> Pasien pernah dirawat pada tgl " . tgl_indo($riwayatinap['2']) . ' - ' . tgl_indo($riwayatinap['3']) . "</a>";
                                       }
                                     } ?>
                                 </td>
@@ -166,7 +166,7 @@
                                     if ($jumrotgen == 0) {
                                       echo 'Tidak ada foto';
                                     } else { ?>
-                                    <form action="detail_rotgen_apoteker.php" method="POST">
+                                    <form action="detail_rotgen_perawat.php" method="POST">
                                       <input type="hidden" name="id" value="<?php $idid; ?>">
                                       <button type="submit" title="Detail Foto Rotgen Pasien" data-toggle="tooltip" id="btn-link"><i class="fas fa-info-circle text-info"></i> <?php echo $jumrotgen; ?> Foto</button>
                                     </form>

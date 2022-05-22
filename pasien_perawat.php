@@ -37,8 +37,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_apoteker.php';
-      include 'part/sidebar_apoteker.php';
+      include 'part/navbar_perawat.php';
+      include 'part/sidebar_perawat.php';
       ?>
 
       <!-- Main Content -->
@@ -52,7 +52,10 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Pasien yang telah melakukan booking</h4>
+                    <h4>Pasien yang telah terdaftar</h4>
+                    <div class="card-header-action">
+                      <a href="pasien_book_perawat.php" class="btn btn-primary">Pasien yang telah booking</a>
+                    </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -61,15 +64,14 @@
                           <tr>
                             <th class="text-center">#</th>
                             <th>Nama</th>
-                            <th>Dokter yang dipilih</th>
-                            <th>Tanggal Booking</th>
-                            <th>Waktu Booking</th>
-                            <th>Fasilitas</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Usia</th>
+                            <th class="text-center">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-                          $sql = mysqli_query($conn, "SELECT * FROM booking");
+                          $sql = mysqli_query($conn, "SELECT * FROM pasien");
                           $i = 0;
                           while ($row = mysqli_fetch_array($sql)) {
                             $idpasien = $row['id'];
@@ -78,11 +80,41 @@
                             <tr>
                               <td><?php echo $i; ?></td>
                               <th><?php echo ucwords($row['nama_pasien']); ?>
+                                <div class="table-links">
+                                  <?php
+                                  $rekam = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien='$idpasien'");
+                                  $cekrekam = mysqli_num_rows($rekam);
+                                  if ($cekrekam == 0) {
+                                    echo '<a>Pasien belum memiliki catatan medis</a>';
+                                  } else { ?>
+                                    <form method="POST" action="detail_pasien_perawat.php">
+                                      <input type="hidden" name="id" value="<?php echo $row['nama_pasien']; ?>">
+                                      <button type="submit" id="btn-link">Pasien memiliki <?php echo $cekrekam; ?> catatan medis</button>
+                                    </form>
+                                  <?php }
+                                  ?>
+                                </div>
                               </th>
-                              <td><?php echo $row['dokter_pilih'] ?></td>
-                              <td><?php echo $row['tanggal']?></td>
-                              <td><?php echo $row['pukul']?></td>
-                              <td><?php echo $row['fasilitas']?></td>
+                              <td><?php if ($row['tgl_lahir'] == "0" OR $row['tgl_lahir'] == "") {
+                                    echo "Data belum di input";
+                                  } else {
+                                    echo tgl_indo($row['tgl_lahir']);
+                                  } ?></td>
+                              <td><?php if ($row['tgl_lahir'] == "0" OR $row['tgl_lahir'] == "") {
+                                    echo "Data belum di input";
+                                  } else {
+                                    umur($row['tgl_lahir']);
+                                  } ?></td>
+                              <td align="center">
+                                <form method="POST" action="detail_pasien_perawat.php">
+                                  <span data-target="#editPasien" data-toggle="modal" data-id="<?php echo $idpasien; ?>" data-nama="<?php echo $row['nama_pasien']; ?>" data-lahir="<?php echo $row['tgl_lahir']; ?>" data-tinggi="<?php echo $row['tinggi_badan']; ?>" data-berat="<?php echo $row['berat_badan']; ?>">
+                                    <a class="btn btn-primary btn-action mr-1" title="Edit Data Pasien" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
+                                  </span>
+                                  <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_perawat.php?type=pasien&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+                                  <input type="hidden" name="id" value="<?php echo $row['nama_pasien']; ?>">
+                                  <button type="submit" class="btn btn-info btn-action mr-1" title="Detail Pasien" data-toggle="tooltip" name="submit"><i class="fas fa-info-circle"></i></button>
+                                </form>
+                              </td>
                             </tr>
                           <?php } ?>
                         </tbody>

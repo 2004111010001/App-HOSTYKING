@@ -18,9 +18,9 @@
           }, function() {
               <?php
                 if ($tipe == "ruang_inap") {
-                    echo 'window.location.href="../ruangan_apoteker.php";';
+                    echo 'window.location.href="../ruangan_perawat.php";';
                 } else {
-                    echo 'window.location.href="../'.$tipe.'_apoteker.php";';
+                    echo 'window.location.href="../'.$tipe.'_perawat.php";';
                 }
                 ?>
           });

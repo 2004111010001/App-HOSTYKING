@@ -142,7 +142,7 @@
 																if ($row['pekerjaan'] == '1') {
 																	echo '<div class="badge badge-pill badge-primary mb-1">Dokter';
 																} else {
-																	echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
+																	echo '<div class="badge badge-pill badge-success mb-1">perawat';
 																} ?>
 										</tr>
 									<?php } ?>
@@ -190,7 +190,7 @@
 								<label>Pekerjaan</label>
 								<select class="form-control selectric" name="pekerjaan">
 									<option value="1">Dokter</option>
-									<option value="2">Apoteker</option>
+									<option value="2">Perawat</option>
 								</select>
 							</div>
 							<div class="form-group">

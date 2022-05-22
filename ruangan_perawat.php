@@ -67,8 +67,8 @@
 			<div class="navbar-bg"></div>
 
 			<?php
-			include 'part/navbar_apoteker.php';
-			include 'part/sidebar_apoteker.php';
+			include 'part/navbar_perawat.php';
+			include 'part/sidebar_perawat.php';
 			?>
 
 			<!-- Main Content -->

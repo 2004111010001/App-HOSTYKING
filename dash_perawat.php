@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Dashboard Apoteker";
+  $page = "Dashboard Perawat";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -31,15 +31,15 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_apoteker.php';
-      include 'part/sidebar_apoteker.php';
+      include 'part/navbar_perawat.php';
+      include 'part/sidebar_perawat.php';
       ?>
 
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Dashboard Apoteker</h1>
+            <h1>Dashboard Perawat</h1>
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Apoteker</h4>
+                    <h4>Perawat</h4>
                   </div>
                   <div class="card-body">
                     <?php echo $jumlahpegawai; ?>
@@ -109,7 +109,7 @@
                 <div class="card-header">
                   <h4>Status Ruang Rawat Inap</h4>
                   <div class="card-header-action">
-                    <a href="ruangan_apoteker.php">Detail</a>
+                    <a href="ruangan_perawat.php">Detail</a>
                   </div>
                 </div>
                 <div class="card-body">
@@ -166,7 +166,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Rawat Inap</h4>
-                        <a href="ruangan_apoteker.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="ruangan_perawat.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -177,7 +177,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Foto Rotgen</h4>
-                        <a href="rotgen_apoteker.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="rotgen_perawat.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -188,7 +188,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Data Obat</h4>
-                        <a href="obat_apoteker.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="obat_perawat.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>

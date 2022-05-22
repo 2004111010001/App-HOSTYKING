@@ -73,8 +73,8 @@ session_destroy();
                     Login for Doctor
                     <em class="ml-2" data-feather="arrow-right"></em>
                 </button></a>
-                <a href="login_apoteker.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">
-                    Login for Apoteker
+                <a href="login_perawat.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Login for Perawat
                     <em class="ml-2" data-feather="arrow-right"></em>
                 </button></a>
                 <a href="login_pasien.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">

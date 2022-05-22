@@ -21,7 +21,7 @@ $output = mysqli_fetch_array($nama);
       <div class="d-sm-none d-lg-inline-block">Hi, <?php if($output["pekerjaan"] == "1"){
             echo " Dokter ";
           }else{
-            echo " Apoteker ";
+            echo " Perawat ";
           } echo ucwords($output['nama_pegawai']); ?></div></a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title"><i class="fas fa-circle text-success"></i>
@@ -29,7 +29,7 @@ $output = mysqli_fetch_array($nama);
           if($output["pekerjaan"] == "1"){
             echo "Dokter";
           }else{
-            echo "Apoteker";
+            echo "Perawat";
           }
           ?>
         </div>
