@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Data Pasien (Admin)";
+  $page = "Data Pasien";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -37,8 +37,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_admin.php';
-      include 'part/sidebar_admin.php';
+      include 'part/navbar_apoteker.php';
+      include 'part/sidebar_apoteker.php';
       ?>
 
       <!-- Main Content -->
@@ -62,8 +62,8 @@
                             <th class="text-center">#</th>
                             <th>Nama</th>
                             <th>Dokter yang dipilih</th>
-                            <th>Tanggal</th>
-                            <th>Pukul</th>
+                            <th>Tanggal Booking</th>
+                            <th>Waktu Booking</th>
                             <th>Fasilitas</th>
                           </tr>
                         </thead>

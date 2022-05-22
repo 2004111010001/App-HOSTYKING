@@ -69,8 +69,12 @@ session_destroy();
                 <h5>Hopital Facility Booking (HOSTYKING)</h5>
                 <h1 class="heading-black text-capitalize">Cepat tanpa Antrian Panjang!</h1>
                 <p class="lead py-3">Aplikasi HOSTYKING atau singkatan dari Hospital Facility Booking merupakan aplikasi yang mampu membooking fasilitas yang ada dirumah sakit</p>
-                <a href="login_admin.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">
+                <a href="login_dokter.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">
                     Login for Doctor
+                    <em class="ml-2" data-feather="arrow-right"></em>
+                </button></a>
+                <a href="login_apoteker.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Login for Apoteker
                     <em class="ml-2" data-feather="arrow-right"></em>
                 </button></a>
                 <a href="login_pasien.php"><button class="btn btn-primary d-inline-flex flex-row align-items-center">

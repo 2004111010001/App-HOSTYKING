@@ -49,8 +49,16 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id`, `nama_obat`, `stok`, `harga`) VALUES
-(1, 'paracetamol', 1000, 500),
-(2, 'antibiotik', 1000, 5000);
+(1, 'paracetamol', 1000, 7800),
+(2, 'antibiotik', 1000, 5900),
+(3, 'hufagrip', 1000, 4500),
+(4, 'termorex', 1000, 10000),
+(5, 'proris ibuprofen', 1000, 2000),
+(6, 'sanmol', 1000, 3000),
+(7, 'pamol', 1000, 8000),
+(8, 'bufect', 1000, 6500),
+(9, 'panadol', 1000, 7000),
+(10, 'flucadex', 1000, 9000);
 
 -- --------------------------------------------------------
 
@@ -78,7 +86,16 @@ CREATE TABLE `pasien` (
 --
 
 INSERT INTO `pasien` (`id`, `mail`, `nama_pasien`, `tgl_lahir`, `nik`, `tinggi_badan`, `berat_badan`, `alamat`, `username`, `password`) VALUES
-(1, 'butet1611@gmail.com', 'Butet Susanto', '2001-11-16', '12345678910', 170, '65', 'Limpok', 'Butet', 'butetpasien');
+(1, 'wahyu@gmail.com', 'Wahyu', '1969-09-12', '12345678910', 170, '65', 'Banda Aceh', 'wahyu', 'pasien'),
+(2, 'handru@gmail.com', 'Handru Hartawan', '1954-11-16', '12345678910', 170, '65', 'Banda Aceh', 'handru', 'pasien'),
+(3, 'aidil@gmail.com', 'Aidil Ilham', '1968-05-19', '12345678910', 170, '65', 'Banda Aceh', 'aidil', 'pasien'),
+(4, 'nefo@gmail.com', 'Nefo Preyandre', '1978-10-21', '12345678910', 170, '65', 'Banda Aceh', 'nefo', 'pasien'),
+(5, 'nurdiansyah@gmail.com', 'Nurdiansyah', '1977-11-16', '12345678910', 170, '65', 'Banda Aceh', 'nurdiansyah', 'pasien'),
+(6, 'jordi@gmail.com', 'Jordi', '1967-11-16', '12345678910', 170, '65', 'Banda Aceh', 'jordi', 'pasien'),
+(7, 'dian@gmail.com', 'Dian', '1998-11-16', '12345678910', 170, '65', 'Banda Aceh', 'dian', 'pasien'),
+(8, 'ayu@gmail.com', 'Ayu', '2001-11-16', '12345678910', 170, '65', 'Banda Aceh', 'ayu', 'pasien'),
+(9, 'nino@gmail.com', 'Nino', '1979-11-16', '12345678910', 170, '65', 'Banda Aceh', 'nino','pasien'),
+(10, 'indah@gmail.com', 'Indah', '1982-11-16', '12345678910', 170, '65', 'Banda Aceh', 'indah', 'pasien');
 
 --
 -- Struktur dari tabel `pegawai`
@@ -98,7 +115,16 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id`, `username`, `password`, `nama_pegawai`, `alamat`, `pekerjaan`) VALUES
-(1, 'caesar', 'admin', 'Caesar Maulana', 'Banda Aceh', 1);
+(1, 'caesar', 'admin', 'Caesar Maulana', 'Banda Aceh', 1),
+(2, 'rahmat', 'admin', 'Rahmat Ferdiansyah', 'Banda Aceh', 1),
+(3, 'caesar', 'admin', 'Caesar Maulana', 'Banda Aceh', 1),
+(4, 'nani', 'admin', 'Nani Permatasari', 'Banda Aceh', 1),
+(5, 'adinda', 'admin', 'Adinda Mutia', 'Banda Aceh', 1),
+(6, 'ihsan', 'admin', 'Ihsan Batubara', 'Banda Aceh', 2),
+(7, 'haiqal', 'admin', 'Muhammad Haiqal', 'Banda Aceh', 2),
+(8, 'jefry', 'admin', 'Jefry Ardiansyah', 'Banda Aceh', 2),
+(9, 'fauzi', 'admin', 'Muhammad Fauzi', 'Banda Aceh', 2),
+(10, 'bayu', 'admin', 'Bayu Setianto', 'Banda Aceh', 2);
 
 -- --------------------------------------------------------
 
@@ -168,7 +194,13 @@ INSERT INTO `ruang_inap` (`id`, `nama_ruang`, `id_pasien`, `tgl_masuk`, `jam_mas
 (1, 'Melati', NULL, NULL, '', 2, 900000),
 (2, 'Mawar', NULL, NULL, '', 0, 600000),
 (3, 'Coper', NULL, NULL, '', 2, 400000),
-(4, 'Kaktus', NULL, NULL, '', 0, 550000);
+(4, 'Kaktus', NULL, NULL, '', 0, 750000),
+(5, 'Kamboja', NULL, NULL, '', 0, 650000),
+(6, 'Teratai', NULL, NULL, '', 0, 850000),
+(7, 'Dahlia', NULL, NULL, '', 0, 950000),
+(8, 'Anggrek', NULL, NULL, '', 0, 650000),
+(9, 'Tulip', NULL, NULL, '', 0, 700000),
+(10, 'Matahari', NULL, NULL, '', 0, 850000);
 
 --
 -- Struktur dari tabel `booking`

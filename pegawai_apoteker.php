@@ -41,7 +41,7 @@
 								}, 500);
 								</script>';
 			} else {
-				$up2 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', password='$new_pass', alamat='$alam' WHERE id='$id'");
+				$up2 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', password='$new_pass', alamat='$alam', senin='$senin', selasa='$selasa', rabu='$rabu', kamis='$kamis', jumat='$jumat', sabtu='$sabtu' WHERE id='$id'");
 				echo '<script>
 				setTimeout(function() {
 					swal({
@@ -96,8 +96,8 @@
 			<div class="navbar-bg"></div>
 
 			<?php
-			include 'part/navbar_pasien.php';
-			include 'part/sidebar_pasien.php';
+			include 'part/navbar_apoteker.php';
+			include 'part/sidebar_apoteker.php';
 			?>
 
 			<!-- Main Content -->
@@ -112,7 +112,10 @@
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h4><?php echo "Data Pegawai yang Ada Di Rumah Sakit"; ?></h4>
+										<h4><?php echo $page; ?></h4>
+										<div class="card-header-action">
+											<a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Pegawai</a>
+										</div>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">
@@ -125,6 +128,7 @@
 														<th>Nama Pegawai</th>
 														<th>Alamat</th>
 														<th>Pekerjaan</th>
+														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -144,6 +148,14 @@
 																} else {
 																	echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
 																} ?>
+										</div>
+										</td>
+										<td>
+											<span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
+												<a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
+											</span>
+											<a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_apoteker.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+										</td>
 										</tr>
 									<?php } ?>
 									</tbody>

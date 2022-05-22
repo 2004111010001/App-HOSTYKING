@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Booking (Pasien)";
+  $page = "Booking Fasilitas";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -320,7 +320,9 @@
                                           <?php
                                               $dokter = mysqli_query($conn, "SELECT * FROM pegawai");
                                               while ($namadokter = mysqli_fetch_array($dokter)) {
-                                                echo "<option value='" . $namadokter['id'] . "'>" . $namadokter['nama_pegawai'] . "</option>";
+                                                if ($namadokter['pekerjaan'] == 1){
+                                                  echo "<option value='" . $namadokter['id'] . "'>" . $namadokter['nama_pegawai'] . "</option>";
+                                                }
                                               }
                                               ?>
                                           </select>

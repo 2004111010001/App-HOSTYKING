@@ -4,7 +4,7 @@
 <head>
   <?php
   $page1 = "riwayatinap";
-  $page = "Riwayat Rawat Inap (Admin)";
+  $page = "Riwayat Rawat Inap";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -18,8 +18,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_admin.php';
-      include 'part/sidebar_admin.php';
+      include 'part/navbar_apoteker.php';
+      include 'part/sidebar_apoteker.php';
       ?>
 
       <!-- Main Content -->

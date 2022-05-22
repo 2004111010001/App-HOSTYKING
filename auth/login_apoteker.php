@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <link rel="shortcut icon" type="image/x-icon" href="../assets/img/Logo.png" />
-  <title>Login (Admin)</title>
+  <title>Login Apoteker</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
   <?php
   session_start();
   if(isset($_SESSION['id_pegawai'])){
-    header('location:../dash_admin.php');
+    header('location:../dash_apoteker.php');
   }else{
     include 'connect.php';
     if(isset($_POST['submit'])){
@@ -40,8 +40,20 @@
             }, 500);
             </script>
             ';
+          }elseif($userid['pekerjaan'] == 1){
+            echo '
+            <script>
+            setTimeout(function() {
+              swal({
+                title: "Login Gagal",
+                text: "Username atau Password Anda Salah. Mohon periksa kembali form anda!",
+                icon: "error"
+                });
+                }, 500);
+                </script>
+                ';
           }else{
-            header('location:../dash_admin.php');
+            header('location:../dash_apoteker.php');
             $_SESSION['id_pegawai'] = $userid['id'];
           
           }
@@ -59,7 +71,7 @@
                     <a href=index.php><img src="../assets/img/Logo.png" alt="logo" width="100" class="shadow-light rounded-box"></a>
                   </div>
                   <div class="card card-primary">
-                    <div class="card-header"><h4>Login for Doctor</h4></div>
+                    <div class="card-header"><h4>Login for Apoteker</h4></div>
 
                     <div class="card-body">
                       <form method="POST" action="" class="needs-validation" novalidate="" autocomplete="off">
@@ -87,9 +99,6 @@
                       </div>
                     </form>
                   </div>
-                </div>
-                <div class="card-body">
-                  <h6>Belum punya akun?<a href="signup.php"> Daftar!</a></h6>
                 </div>
                   
                 <div class="simple-footer">

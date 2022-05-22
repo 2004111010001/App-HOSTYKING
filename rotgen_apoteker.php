@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Data Foto Rotgen (Admin)";
+  $page = "Data Foto Rotgen";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -16,8 +16,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_admin.php';
-      include 'part/sidebar_admin.php';
+      include 'part/navbar_apoteker.php';
+      include 'part/sidebar_apoteker.php';
       ?>
 
       <!-- Main Content -->
@@ -32,9 +32,6 @@
                 <div class="card">
                   <div class="card-header">
                     <h4>Pasien yang memiliki foto rotgen</h4>
-                    <div class="card-header-action">
-                      <a href="tindakan_admin.php" class="btn btn-primary">Tambah Foto Rotgen</a>
-                    </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -71,7 +68,7 @@
                               <td>Rp. <?php echo number_format($row['biaya'], 0, ".", "."); ?></td>
                               <td align="center">
                                 <div class="btn-group">
-                                  <form method="POST" action="detail_rotgen_admin.php">
+                                  <form method="POST" action="detail_rotgen_apoteker.php">
                                     <input type="hidden" name="id" value="<?php echo $pasien['nama_pasien']; ?>">
                                     <input type="hidden" name="idriwayat" value="<?php echo $idriwayat ?>">
                                     <button type="submit" class="btn btn-info" name="detail" title="Menampilkan semua foto rotgen" data-toggle="tooltip">Info Detail</button>

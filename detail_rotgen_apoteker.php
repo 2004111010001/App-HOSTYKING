@@ -26,8 +26,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_admin.php';
-      include 'part/sidebar_admin.php';
+      include 'part/navbar_apoteker.php';
+      include 'part/sidebar_apoteker.php';
       include 'part_func/umur.php';
       include 'part_func/tgl_ind.php';
       ?>
@@ -38,7 +38,7 @@
           <div class="section-header">
             <h1>Foto Rotgen Pasien</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="pasien_admin.php">Foto Rotgen</a></div>
+              <div class="breadcrumb-item active"><a href="pasien_apoteker.php">Foto Rotgen</a></div>
               <div class="breadcrumb-item">Foto Rotgen : <?php echo ucwords($idnama); ?></div>
             </div>
           </div>
@@ -63,7 +63,6 @@
                           } else {
                             echo '<button type="submit" class="btn btn-primary" name="print_foto">Print Foto</button> &emsp;';
                           } ?>
-                          <a href="tindakan_admin.php" class="btn btn-primary">Tindakan Dokter</a>
                         </form>
                       </div>
                     </div>

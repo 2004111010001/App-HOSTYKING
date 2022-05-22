@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Data Obat (Pasien)";
+  $page = "Data Obat";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";

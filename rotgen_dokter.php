@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Data Foto Rotgen Saya";
+  $page = "Data Foto Rotgen";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -16,8 +16,8 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_pasien.php';
-      include 'part/sidebar_pasien.php';
+      include 'part/navbar_dokter.php';
+      include 'part/sidebar_dokter.php';
       ?>
 
       <!-- Main Content -->
@@ -31,7 +31,10 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Foto rotgen saya</h4>
+                    <h4>Pasien yang memiliki foto rotgen</h4>
+                    <div class="card-header-action">
+                      <a href="tindakan_dokter.php" class="btn btn-primary">Tambah Foto Rotgen</a>
+                    </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -43,6 +46,7 @@
                             <th>Jumlah Foto Rotgen</th>
                             <th>Nama Penyakit</th>
                             <th>Biaya</th>
+                            <th class="text-center">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -67,7 +71,7 @@
                               <td>Rp. <?php echo number_format($row['biaya'], 0, ".", "."); ?></td>
                               <td align="center">
                                 <div class="btn-group">
-                                  <form method="POST" action="detail_rotgen_pasien.php">
+                                  <form method="POST" action="detail_rotgen_dokter.php">
                                     <input type="hidden" name="id" value="<?php echo $pasien['nama_pasien']; ?>">
                                     <input type="hidden" name="idriwayat" value="<?php echo $idriwayat ?>">
                                     <button type="submit" class="btn btn-info" name="detail" title="Menampilkan semua foto rotgen" data-toggle="tooltip">Info Detail</button>

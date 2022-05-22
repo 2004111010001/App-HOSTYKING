@@ -56,7 +56,7 @@ $output = mysqli_fetch_array($nama);
       </div>
       <div class="modal-footer bg-whitesmoke br">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="window.location.href = 'auth/logout.php';" class="btn btn-danger">Ya</button>
+        <button type="button" onclick="window.location.href = 'auth/logout_dokter.php';" class="btn btn-danger">Ya</button>
       </div>
     </div>
   </div>

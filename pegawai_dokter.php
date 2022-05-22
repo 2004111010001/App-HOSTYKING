@@ -3,7 +3,7 @@
 
 <head>
 	<?php
-	$page = "Data Pegawai (Admin)";
+	$page = "Data Pegawai";
 	session_start();
 	include 'auth/connect.php';
 	include "part/head.php";
@@ -96,8 +96,8 @@
 			<div class="navbar-bg"></div>
 
 			<?php
-			include 'part/navbar_admin.php';
-			include 'part/sidebar_admin.php';
+			include 'part/navbar_dokter.php';
+			include 'part/sidebar_dokter.php';
 			?>
 
 			<!-- Main Content -->
@@ -154,7 +154,7 @@
 											<span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
 												<a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
 											</span>
-											<a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+											<a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_dokter.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
 										</td>
 										</tr>
 									<?php } ?>

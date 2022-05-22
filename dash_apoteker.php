@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Dashboard Pasien";
+  $page = "Dashboard Apoteker";
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
@@ -31,15 +31,77 @@
       <div class="navbar-bg"></div>
 
       <?php
-      include 'part/navbar_pasien.php';
-      include 'part/sidebar_pasien.php';
+      include 'part/navbar_apoteker.php';
+      include 'part/sidebar_apoteker.php';
       ?>
 
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Dashboard Pasien</h1>
+            <h1>Dashboard Apoteker</h1>
+          </div>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-primary">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Apoteker</h4>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $jumlahpegawai; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                  <i class="fas fa-user-injured"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Data Pasien</h4>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $jumpasien; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-warning">
+                  <i class="fas fa-bed"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Pasien Rawat Inap</h4>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $jumrawatinap; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-diagnoses"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Dokter</h4>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $jumlahdokter; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-lg-6 col-md-12 col-12 col-sm-12">
@@ -47,7 +109,7 @@
                 <div class="card-header">
                   <h4>Status Ruang Rawat Inap</h4>
                   <div class="card-header-action">
-                    <a href="ruangan_pasien.php">Detail</a>
+                    <a href="ruangan_apoteker.php">Detail</a>
                   </div>
                 </div>
                 <div class="card-body">
@@ -104,7 +166,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Rawat Inap</h4>
-                        <a href="ruangan_pasien.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="ruangan_apoteker.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -115,7 +177,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Foto Rotgen</h4>
-                        <a href="rotgen_pasien.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="rotgen_apoteker.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -126,7 +188,7 @@
                       </div>
                       <div class="card-body">
                         <h4>Data Obat</h4>
-                        <a href="obat_pasien.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
+                        <a href="obat_apoteker.php" class="card-cta">Detail <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>

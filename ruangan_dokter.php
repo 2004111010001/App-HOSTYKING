@@ -4,7 +4,7 @@
 <head>
 	<?php
 	$page1 = "ruang";
-	$page = "Status Ruangan Rawat Inap (Admin)";
+	$page = "Status Ruangan Rawat Inap";
 	session_start();
 	include 'auth/connect.php';
 	include "part/head.php";
@@ -67,8 +67,8 @@
 			<div class="navbar-bg"></div>
 
 			<?php
-			include 'part/navbar_admin.php';
-			include 'part/sidebar_admin.php';
+			include 'part/navbar_dokter.php';
+			include 'part/sidebar_dokter.php';
 			?>
 
 			<!-- Main Content -->
@@ -147,14 +147,13 @@
 												<span data-toggle="tooltip" title="Status masih dipakai, Data tidak dapat dihapus">
 													<a class="btn btn-danger disabled btn-action mr-1"><i class="fas fa-trash"></i></a>
 												</span>
-												<a data-toggle="tooltip" title="Konfirmasi pasien keluar" class="btn btn-warning btn-action mr-1" data-confirm="Pasien Keluar|Apakah benar pasien yang bernama <b><?php echo ucwords($namapasien["nama_pasien"]) ?></b> akan keluar?" data-confirm-yes="location.reload(); window.open('updateriwayat.php?id=<?php echo $defpasien; ?>', '_blank');"><i class="ion-log-out"></i></a>
 											<?php } else { ?>
 												<span data-target="#editRuang" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_ruang']; ?>" data-harga="<?php echo $row['biaya']; ?>">
 													<a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
 												</span>
-												<a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete.php?type=ruang_inap&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+												<a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'auth/delete_dokter.php?type=ruang_inap&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
 												<span data-target="#editRuang" data-toggle="modal">
-													<a data-toggle="tooltip" title="Pasien masuk" class="btn btn-success btn-action" href="tindakan_admin.php"><i class="ion-log-in"></i></a>
+													<a data-toggle="tooltip" title="Pasien masuk" class="btn btn-success btn-action" href="tindakan_dokter.php"><i class="ion-log-in"></i></a>
 												</span>
 											<?php } ?>
 										</td>
@@ -250,7 +249,7 @@
 							<div class="form-group">
 								<label>Status Ruangan</label>
 								<select class="form-control selectric" name="status">
-									<option value="">Terserdia</option>
+									<option value="1">Terserdia</option>
 									<option value="2">Dalam Perbaikan</option>
 								</select>
 							</div>

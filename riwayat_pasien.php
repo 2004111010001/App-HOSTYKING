@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  $page = "Riwayat Pemeriksaan (Pasien)";
+  $page = "Riwayat Pemeriksaan Pasien";
   
   session_start();
   include 'auth/connect.php';
