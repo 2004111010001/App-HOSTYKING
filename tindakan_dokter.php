@@ -76,7 +76,7 @@
 					swal({
 						title: "Foto terupload!",
 						text: "' . $split . ' Foto Telah Berhasil Diupload",
-						icon: "success"idpasien
+						icon: "success"
 						});
 					}, 500);
 			</script>';

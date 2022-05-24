@@ -19,13 +19,6 @@
 
     <!-- Bootstrap CSS / Color Scheme -->
     <link rel="stylesheet" href="../assets/css/default.css" id="theme-color">
-<?php
-session_start();
-unset($_SESSION['id_pegawai']);
-unset($_SESSION['id_pasien']);
-session_destroy();
-
-?>
 </head>
 <body>
 

@@ -16,7 +16,7 @@
 
   <?php
   session_start();
-  if(isset($_SESSION['id_pegawai'])){
+  if(isset($_SESSION['id_dokter'])){
     header('location:../dash_dokter.php');
   }else{
     include 'connect.php';
@@ -54,7 +54,7 @@
                 ';
           }else{
             header('location:../dash_dokter.php');
-            $_SESSION['id_pegawai'] = $userid['id'];
+            $_SESSION['id_dokter'] = $userid['id'];
           
           }
         }

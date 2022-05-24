@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `foto_rotgen` (
-  `id` int(11) NOT NULL,
-  `id_pasien` int(11) NOT NULL,
-  `id_penyakit` int(11) NOT NULL,
-  `biaya` int(11) NOT NULL,
+  `id` int(200) NOT NULL,
+  `id_pasien` int(200) NOT NULL,
+  `id_penyakit` int(200) NOT NULL,
+  `biaya` int(200) NOT NULL,
   `directory` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,10 +38,10 @@ CREATE TABLE `foto_rotgen` (
 --
 
 CREATE TABLE `obat` (
-  `id` int(11) NOT NULL,
+  `id` int(200) NOT NULL,
   `nama_obat` varchar(300) NOT NULL,
-  `stok` int(11) NOT NULL,
-  `harga` int(11) NOT NULL
+  `stok` int(200) NOT NULL,
+  `harga` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -67,13 +67,13 @@ INSERT INTO `obat` (`id`, `nama_obat`, `stok`, `harga`) VALUES
 --
 
 CREATE TABLE `pasien` (
-  `id` int(11) NOT NULL,
+  `id` int(200) NOT NULL,
   `mail` varchar(200) NOT NULL,
   `nama_pasien` varchar(200) NOT NULL,
   `tgl_lahir` varchar(200) NOT NULL,
   `nik` int(16) NOT NULL,
-  `tinggi_badan` int(11) NOT NULL,
-  `berat_badan` int(11) NOT NULL,
+  `tinggi_badan` int(200) NOT NULL,
+  `berat_badan` int(200) NOT NULL,
   `alamat` text NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL
@@ -102,12 +102,12 @@ INSERT INTO `pasien` (`id`, `mail`, `nama_pasien`, `tgl_lahir`, `nik`, `tinggi_b
 --
 
 CREATE TABLE `pegawai` (
-  `id` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
+  `id` int(200) NOT NULL,
+  `username` varchar(200) NOT NULL,
   `password` varchar(100) NOT NULL,
   `nama_pegawai` varchar(200) NOT NULL,
   `alamat` varchar(360) NOT NULL,
-  `pekerjaan` int(11) NOT NULL
+  `pekerjaan` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -133,11 +133,11 @@ INSERT INTO `pegawai` (`id`, `username`, `password`, `nama_pegawai`, `alamat`, `
 --
 
 CREATE TABLE `riwayat_obat` (
-  `id` int(11) NOT NULL,
-  `id_penyakit` int(11) NOT NULL,
-  `id_pasien` int(11) NOT NULL,
-  `id_obat` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL
+  `id` int(200) NOT NULL,
+  `id_penyakit` int(200) NOT NULL,
+  `id_pasien` int(200) NOT NULL,
+  `id_obat` int(200) NOT NULL,
+  `jumlah` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -147,13 +147,13 @@ CREATE TABLE `riwayat_obat` (
 --
 
 CREATE TABLE `riwayat_penyakit` (
-  `id` int(11) NOT NULL,
-  `id_pasien` int(11) NOT NULL,
+  `id` int(200) NOT NULL,
+  `id_pasien` int(200) NOT NULL,
   `penyakit` varchar(300) NOT NULL,
   `diagnosa` text NOT NULL,
   `tgl` varchar(200) NOT NULL,
-  `id_rawatinap` varchar(11) NOT NULL,
-  `biaya_pengobatan` int(11) NOT NULL
+  `id_rawatinap` varchar(200) NOT NULL,
+  `biaya_pengobatan` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -163,11 +163,11 @@ CREATE TABLE `riwayat_penyakit` (
 --
 
 CREATE TABLE `riwayat_rawatinap` (
-  `id` int(11) NOT NULL,
-  `id_pasien` int(11) NOT NULL,
+  `id` int(200) NOT NULL,
+  `id_pasien` int(200) NOT NULL,
   `tgl_masuk` varchar(200) NOT NULL,
   `tgl_keluar` varchar(200) NOT NULL,
-  `biaya` int(11) NOT NULL
+  `biaya` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -177,13 +177,13 @@ CREATE TABLE `riwayat_rawatinap` (
 --
 
 CREATE TABLE `ruang_inap` (
-  `id` int(11) NOT NULL,
+  `id` int(200) NOT NULL,
   `nama_ruang` varchar(200) NOT NULL,
-  `id_pasien` varchar(11) DEFAULT NULL,
+  `id_pasien` varchar(200) DEFAULT NULL,
   `tgl_masuk` varchar(200) DEFAULT NULL,
   `jam_masuk` varchar(100) NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  `biaya` int(11) NOT NULL
+  `status` int(200) DEFAULT NULL,
+  `biaya` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -207,8 +207,8 @@ INSERT INTO `ruang_inap` (`id`, `nama_ruang`, `id_pasien`, `tgl_masuk`, `jam_mas
 --
 
 CREATE TABLE `booking` (
-  `id` int(11) NOT NULL,
-  `id_pasien` int(11) NOT NULL,
+  `id` int(200) NOT NULL,
+  `id_pasien` int(200) NOT NULL,
   `nama_pasien` varchar(200) NOT NULL,
   `dokter_pilih` varchar(200) NOT NULL,
   `tanggal` varchar(200) NOT NULL,
@@ -286,56 +286,56 @@ ALTER TABLE `booking`
 -- AUTO_INCREMENT untuk tabel `foto_rotgen`
 --
 ALTER TABLE `foto_rotgen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `riwayat_obat`
 --
 ALTER TABLE `riwayat_obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `riwayat_penyakit`
 --
 ALTER TABLE `riwayat_penyakit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `riwayat_rawatinap`
 --
 ALTER TABLE `riwayat_rawatinap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `ruang_inap`
 --
 ALTER TABLE `ruang_inap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 --
 -- AUTO_INCREMENT untuk tabel `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

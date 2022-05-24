@@ -7,6 +7,9 @@
   session_start();
   include 'auth/connect.php';
   include "part/head.php";
+  $sessionid = $_SESSION['id_pasien'];
+  $nama = mysqli_query($conn, "SELECT * FROM pasien WHERE id=$sessionid");
+  $output = mysqli_fetch_array($nama);
   ?>
 </head>
 
@@ -43,11 +46,12 @@
                             <th>Jumlah Foto Rotgen</th>
                             <th>Nama Penyakit</th>
                             <th>Biaya</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-                          $sql = mysqli_query($conn, "SELECT *, COUNT(*) FROM foto_rotgen GROUP BY id_pasien, id_penyakit");
+                          $sql = mysqli_query($conn, "SELECT *, COUNT(*) FROM foto_rotgen WHERE id_pasien='$sessionid' GROUP BY id_pasien, id_penyakit");
                           $i = 0;
                           while ($row = mysqli_fetch_array($sql)) {
                             $idpasien = $row['id_pasien'];

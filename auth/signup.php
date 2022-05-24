@@ -16,7 +16,7 @@
 
   <?php
   session_start();
-  if(isset($_SESSION['id_pegawai'])){
+  if(isset($_SESSION['id_pasien'])){
     header('location:../');
   }else{
     include 'connect.php';

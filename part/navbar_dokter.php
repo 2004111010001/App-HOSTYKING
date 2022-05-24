@@ -1,6 +1,6 @@
 <?php
 
-$sessionid = $_SESSION['id_pegawai'];
+$sessionid = $_SESSION['id_dokter'];
 
 if(!isset($sessionid)){
   header('location:auth');

@@ -142,7 +142,7 @@
 																if ($row['pekerjaan'] == '1') {
 																	echo '<div class="badge badge-pill badge-primary mb-1">Dokter';
 																} else {
-																	echo '<div class="badge badge-pill badge-success mb-1">perawat';
+																	echo '<div class="badge badge-pill badge-success mb-1">Perawat';
 																} ?>
 										</tr>
 									<?php } ?>

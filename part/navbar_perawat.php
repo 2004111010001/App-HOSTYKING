@@ -1,6 +1,6 @@
 <?php
 
-$sessionid = $_SESSION['id_pegawai'];
+$sessionid = $_SESSION['id_perawat'];
 
 if(!isset($sessionid)){
   header('location:auth');
@@ -29,7 +29,7 @@ $output = mysqli_fetch_array($nama);
           if($output["pekerjaan"] == "1"){
             echo "Dokter";
           }else{
-            echo "Apoteker";
+            echo "Perawat";
           }
           ?>
         </div>
@@ -56,7 +56,7 @@ $output = mysqli_fetch_array($nama);
       </div>
       <div class="modal-footer bg-whitesmoke br">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="window.location.href = 'auth/logout_apoteker.php';" class="btn btn-danger">Ya</button>
+        <button type="button" onclick="window.location.href = 'auth/logout_perawat.php';" class="btn btn-danger">Ya</button>
       </div>
     </div>
   </div>
