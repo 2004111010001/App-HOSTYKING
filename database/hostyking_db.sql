@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hostyking_db`
+-- Database: `hostyking_db` database yang digunakan untuk menyimpan data dari aplikasi HOSTYKING
 --
 
 -- --------------------------------------------------------
